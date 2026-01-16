@@ -69,7 +69,12 @@ LOTTERY_CONFIG = {
 }
 
 EMAIL_CONFIG = {
-    'recipient': 'sarasinead@aol.com',
+    'recipients': [
+        'sarasinead@aol.com',
+        'marysineadart@gmail.com',
+        'princessuploadie@gmail.com',
+        'rick@gamingdatasystems.com'
+    ],
     'smtp_server': 'smtp.gmail.com',
     'smtp_port': 587,
     'sender_email': os.environ.get('GMAIL_USER', 'princessuploadie@gmail.com'),
@@ -1013,6 +1018,44 @@ body {{ font-family: Georgia, serif; background: #ffe4ec; margin: 0; padding: 20
         </div>
     </div>
     
+    <!-- SECTION: LATEST DRAWINGS -->
+    <div class="section">
+        <div class="section-title" style="color: #880e4f;">📊 LATEST DRAWING RESULTS</div>
+        <p style="color: #2d2d2d; font-size: 12px; margin-bottom: 15px;">The most recent winning numbers for each lottery:</p>
+'''
+    
+    # Add latest drawings for each lottery
+    for lottery in ['l4l', 'la', 'pb', 'mm']:
+        draws = draws_by_lottery.get(lottery, [])
+        if not draws:
+            continue
+        
+        latest = draws[0]
+        name = lottery_names.get(lottery, lottery.upper())
+        emoji = hold_emojis.get(lottery, '🎱')
+        bonus_name_str = bonus_names.get(lottery, 'Bonus')
+        
+        main_nums = sorted(latest.get('main', []))
+        bonus = latest.get('bonus', '?')
+        draw_date = latest.get('date', 'Unknown')
+        
+        balls_html = ''.join([f'<span class="ball" style="background: #e8f5e9; color: #1b5e20; border-color: #4caf50;">{n}</span>' for n in main_nums])
+        
+        html += f'''
+        <div style="background: #f5f5f5; border-radius: 10px; padding: 12px; margin: 10px 0; border-left: 4px solid #4caf50;">
+            <div style="font-weight: bold; color: #2e7d32; margin-bottom: 8px;">{emoji} {name} - {draw_date}</div>
+            <div class="numbers" style="margin: 5px 0;">
+                {balls_html}
+                <span class="plus">+</span>
+                <span class="ball bonus" style="background: #fff9c4; color: #f57f17; border-color: #fbc02d;">{bonus}</span>
+                <span style="font-size: 10px; color: #5d4037; margin-left: 5px;">{bonus_name_str}</span>
+            </div>
+        </div>
+'''
+    
+    html += '''
+    </div>
+    
     <div class="footer" style="color: #2d2d2d;">
         <p style="font-size: 16px; margin-bottom: 10px; color: #880e4f;">💖 With love from Princess Upload 💖</p>
         <p style="color: #2d2d2d;"><a href="https://twitch.tv/princessupload" style="color: #1565c0;">📺 Twitch</a> | <a href="https://youtube.com/@princessuploadie" style="color: #c62828;">▶️ YouTube</a></p>
@@ -1027,7 +1070,7 @@ body {{ font-family: Georgia, serif; background: #ffe4ec; margin: 0; padding: 20
     return html
 
 def send_email(subject, body, draws_by_lottery=None):
-    """Send cute HTML email report."""
+    """Send cute HTML email report to all recipients."""
     if not EMAIL_CONFIG['sender_email'] or not EMAIL_CONFIG['sender_password']:
         print("Email not configured - saving report to file instead")
         report_file = DATA_DIR / f"daily_report_{datetime.now().strftime('%Y%m%d')}.txt"
@@ -1037,9 +1080,11 @@ def send_email(subject, body, draws_by_lottery=None):
         return False
     
     try:
+        recipients = EMAIL_CONFIG['recipients']
+        
         msg = MIMEMultipart('alternative')
         msg['From'] = EMAIL_CONFIG['sender_email']
-        msg['To'] = EMAIL_CONFIG['recipient']
+        msg['To'] = ', '.join(recipients)
         msg['Subject'] = subject
         
         # Attach plain text version
@@ -1053,9 +1098,9 @@ def send_email(subject, body, draws_by_lottery=None):
         with smtplib.SMTP(EMAIL_CONFIG['smtp_server'], EMAIL_CONFIG['smtp_port']) as server:
             server.starttls()
             server.login(EMAIL_CONFIG['sender_email'], EMAIL_CONFIG['sender_password'])
-            server.send_message(msg)
+            server.sendmail(EMAIL_CONFIG['sender_email'], recipients, msg.as_string())
         
-        print(f"💖 Email sent successfully to {EMAIL_CONFIG['recipient']} 💖")
+        print(f"💖 Email sent successfully to {len(recipients)} recipients: {', '.join(recipients)} 💖")
         return True
     except Exception as e:
         print(f"Failed to send email: {e}")
