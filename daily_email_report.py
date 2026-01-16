@@ -1053,14 +1053,14 @@ body {{ font-family: Georgia, serif; background: #ffe4ec; margin: 0; padding: 20
         </div>
 '''
     
-    html += '''
+    html += f'''
     </div>
     
     <div class="footer" style="color: #2d2d2d;">
         <p style="font-size: 16px; margin-bottom: 10px; color: #880e4f;">💖 With love from Princess Upload 💖</p>
         <p style="color: #2d2d2d;"><a href="https://twitch.tv/princessupload" style="color: #1565c0;">📺 Twitch</a> | <a href="https://youtube.com/@princessuploadie" style="color: #c62828;">▶️ YouTube</a></p>
         <p style="margin-top: 15px; font-size: 11px; color: #5d4037;">
-            🎰 For entertainment purposes only • Auto-generated {current_time}
+            🎰 For entertainment purposes only • Auto-generated {current_time} CT (Oklahoma)
         </p>
     </div>
 </div>
