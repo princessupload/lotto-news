@@ -75,6 +75,10 @@ EMAIL_CONFIG = {
         'princessuploadie@gmail.com',
         'rick@gamingdatasystems.com'
     ],
+    'sms_recipients': [
+        '5054798802@tmomail.net',  # T-Mobile SMS gateway
+        '5054798802@msg.fi.google.com'  # Google Fi SMS gateway (backup)
+    ],
     'smtp_server': 'smtp.gmail.com',
     'smtp_port': 587,
     'sender_email': os.environ.get('GMAIL_USER', 'princessuploadie@gmail.com'),
@@ -787,12 +791,12 @@ body {{ font-family: Georgia, serif; background: #ffe4ec; margin: 0; padding: 20
 .lottery-name {{ font-weight: bold; color: #880e4f; font-size: 16px; }}
 .rank-badge {{ background: linear-gradient(135deg, #ffeb3b, #ffc107); color: #5d4037; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: bold; border: 1px solid #ff8f00; }}
 
-/* NUMBER BALLS - High contrast with perfect centering */
-.numbers {{ display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 12px 0; }}
-.ball {{ width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 16px; background: #ffffff; border: 3px solid #c2185b; color: #880e4f; text-align: center; line-height: 1; box-sizing: border-box; }}
-.bonus {{ background: #ffeb3b; color: #5d4037; border: 3px solid #f9a825; box-shadow: 0 3px 10px rgba(249,168,37,0.5); text-shadow: none; font-weight: bold; }}
-.bonus.ice {{ background: #b3e5fc; color: #01579b; border: 3px solid #0288d1; box-shadow: 0 3px 10px rgba(2,136,209,0.5); text-shadow: none; }}
-.plus {{ font-size: 22px; color: #880e4f; margin: 0 8px; font-weight: bold; }}
+/* NUMBER BALLS - Email-safe table-based centering */
+.numbers {{ margin: 12px 0; }}
+.ball {{ display: inline-block; width: 36px; height: 36px; border-radius: 50%; font-weight: bold; font-size: 15px; background: #ffffff; border: 3px solid #c2185b; color: #880e4f; text-align: center; line-height: 30px; margin: 0 3px; vertical-align: middle; }}
+.bonus {{ background: #ffeb3b !important; color: #5d4037 !important; border: 3px solid #f9a825 !important; }}
+.bonus.ice {{ background: #b3e5fc !important; color: #01579b !important; border: 3px solid #0288d1 !important; }}
+.plus {{ font-size: 18px; color: #880e4f; margin: 0 4px; font-weight: bold; vertical-align: middle; display: inline-block; }}
 
 /* PRIORITY BADGES */
 .priority-1 {{ background: linear-gradient(135deg, #ffd700, #ffb300); color: #5d4037; padding: 4px 10px; border-radius: 10px; font-size: 11px; font-weight: bold; }}
@@ -860,7 +864,7 @@ body {{ font-family: Georgia, serif; background: #ffe4ec; margin: 0; padding: 20
         bonus_tied = ticket.get('bonus_tied', [bonus])
         
         # Create ball display
-        balls_html = ''.join([f'<span class="ball">{n}</span>' for n in main_nums])
+        balls_html = ''.join([f'<span style="display:inline-block;width:36px;height:36px;border-radius:50%;font-weight:bold;font-size:15px;background:#ffffff;border:3px solid #c2185b;color:#880e4f;text-align:center;line-height:30px;margin:0 3px;vertical-align:middle;">{n}</span>' for n in main_nums])
         
         # Tied bonus display
         if len(bonus_tied) > 1:
@@ -883,7 +887,7 @@ body {{ font-family: Georgia, serif; background: #ffe4ec; margin: 0; padding: 20
             <div class="numbers">
                 {balls_html}
                 <span class="plus">+</span>
-                <span class="ball bonus">{bonus}</span>
+                <span style="display:inline-block;width:36px;height:36px;border-radius:50%;font-weight:bold;font-size:15px;background:#ffeb3b;border:3px solid #f9a825;color:#5d4037;text-align:center;line-height:30px;margin:0 3px;vertical-align:middle;">{bonus}</span>
                 <span style="font-size: 11px; color: #880e4f; margin-left: 5px; font-weight: bold;">← {bonus_name_str}</span>
             </div>
             {tied_html}
@@ -939,7 +943,7 @@ body {{ font-family: Georgia, serif; background: #ffe4ec; margin: 0; padding: 20
             repeats_str = ', '.join(map(str, repeats)) if repeats else 'analyzing...'
             nd_odds = NEXT_DRAW_ODDS.get(lottery, '1.2x')
             
-            nd_balls_html = ''.join([f'<span class="ball">{n}</span>' for n in nd['ticket']])
+            nd_balls_html = ''.join([f'<span style="display:inline-block;width:36px;height:36px;border-radius:50%;font-weight:bold;font-size:15px;background:#ffffff;border:3px solid #1565c0;color:#0d47a1;text-align:center;line-height:30px;margin:0 3px;vertical-align:middle;">{n}</span>' for n in nd['ticket']])
             
             html += f'''
         <div class="ticket-box next">
@@ -950,7 +954,7 @@ body {{ font-family: Georgia, serif; background: #ffe4ec; margin: 0; padding: 20
             <div class="numbers">
                 {nd_balls_html}
                 <span class="plus" style="color: #1565c0;">+</span>
-                <span class="ball bonus ice">{nd['bonus']}</span>
+                <span style="display:inline-block;width:36px;height:36px;border-radius:50%;font-weight:bold;font-size:15px;background:#b3e5fc;border:3px solid #0288d1;color:#01579b;text-align:center;line-height:30px;margin:0 3px;vertical-align:middle;">{nd['bonus']}</span>
                 <span style="font-size: 11px; color: #0d47a1; margin-left: 5px; font-weight: bold;">← {bonus_name_str}</span>
             </div>
             <div class="schedule" style="background: #e3f2fd; border-color: #bbdefb;">
@@ -1039,7 +1043,7 @@ body {{ font-family: Georgia, serif; background: #ffe4ec; margin: 0; padding: 20
         bonus = latest.get('bonus', '?')
         draw_date = latest.get('date', 'Unknown')
         
-        balls_html = ''.join([f'<span class="ball" style="background: #e8f5e9; color: #1b5e20; border-color: #4caf50;">{n}</span>' for n in main_nums])
+        balls_html = ''.join([f'<span style="display:inline-block;width:36px;height:36px;border-radius:50%;font-weight:bold;font-size:15px;background:#e8f5e9;border:3px solid #4caf50;color:#1b5e20;text-align:center;line-height:30px;margin:0 3px;vertical-align:middle;">{n}</span>' for n in main_nums])
         
         html += f'''
         <div style="background: #f5f5f5; border-radius: 10px; padding: 12px; margin: 10px 0; border-left: 4px solid #4caf50;">
@@ -1047,7 +1051,7 @@ body {{ font-family: Georgia, serif; background: #ffe4ec; margin: 0; padding: 20
             <div class="numbers" style="margin: 5px 0;">
                 {balls_html}
                 <span class="plus">+</span>
-                <span class="ball bonus" style="background: #fff9c4; color: #f57f17; border-color: #fbc02d;">{bonus}</span>
+                <span style="display:inline-block;width:36px;height:36px;border-radius:50%;font-weight:bold;font-size:15px;background:#fff9c4;border:3px solid #fbc02d;color:#f57f17;text-align:center;line-height:30px;margin:0 3px;vertical-align:middle;">{bonus}</span>
                 <span style="font-size: 10px; color: #5d4037; margin-left: 5px;">{bonus_name_str}</span>
             </div>
         </div>
@@ -1068,6 +1072,80 @@ body {{ font-family: Georgia, serif; background: #ffe4ec; margin: 0; padding: 20
 </html>'''
     
     return html
+
+def generate_sms_message(draws_by_lottery):
+    """Generate a concise SMS message with HOLD/NEXT DRAW tickets and jackpots."""
+    jackpots = load_jackpots()
+    lines = ["🎰 LOTTERY UPDATE"]
+    
+    # Add HOLD tickets
+    lines.append("\n📌 HOLD:")
+    for lottery in ['l4l', 'la', 'pb']:
+        ticket = USER_HOLD_TICKETS.get(lottery, {})
+        main = ticket.get('main', [])
+        bonus = ticket.get('bonus', '')
+        name = {'l4l': 'L4L', 'la': 'LA', 'pb': 'PB'}.get(lottery, lottery.upper())
+        lines.append(f"{name}: {main}+{bonus}")
+    
+    # Add NEXT DRAW tickets
+    lines.append("\n🌟 NEXT:")
+    for lottery in ['l4l', 'la', 'pb', 'mm']:
+        draws = draws_by_lottery.get(lottery, [])
+        if draws:
+            nd = generate_next_draw_ticket(lottery, draws)
+            name = {'l4l': 'L4L', 'la': 'LA', 'pb': 'PB', 'mm': 'MM'}.get(lottery, lottery.upper())
+            lines.append(f"{name}: {nd['ticket']}+{nd['bonus']}")
+    
+    # Add latest drawings
+    lines.append("\n📊 LATEST:")
+    for lottery in ['l4l', 'la', 'pb', 'mm']:
+        draws = draws_by_lottery.get(lottery, [])
+        if draws:
+            latest = draws[0]
+            main = sorted(latest.get('main', []))
+            bonus = latest.get('bonus', '?')
+            date = latest.get('date', '?')[-5:]  # MM-DD
+            name = {'l4l': 'L4L', 'la': 'LA', 'pb': 'PB', 'mm': 'MM'}.get(lottery, lottery.upper())
+            lines.append(f"{name} {date}: {main}+{bonus}")
+    
+    # Add after-tax jackpots
+    lines.append("\n💰 JACKPOTS (after OK tax):")
+    for lottery in ['l4l', 'la', 'pb', 'mm']:
+        jp = jackpots.get(lottery, {})
+        cash = jp.get('cash_value', 0)
+        if cash:
+            after_tax = calculate_after_tax(cash)
+            name = {'l4l': 'L4L', 'la': 'LA', 'pb': 'PB', 'mm': 'MM'}.get(lottery, lottery.upper())
+            lines.append(f"{name}: {format_money(after_tax)}")
+    
+    return '\n'.join(lines)
+
+def send_sms(draws_by_lottery):
+    """Send SMS via email-to-SMS gateway."""
+    if not EMAIL_CONFIG.get('sms_recipients'):
+        return False
+    
+    try:
+        sms_body = generate_sms_message(draws_by_lottery)
+        
+        for sms_recipient in EMAIL_CONFIG['sms_recipients']:
+            msg = MIMEText(sms_body, 'plain', 'utf-8')
+            msg['From'] = EMAIL_CONFIG['sender_email']
+            msg['To'] = sms_recipient
+            msg['Subject'] = ''  # SMS doesn't use subject
+            
+            with smtplib.SMTP(EMAIL_CONFIG['smtp_server'], EMAIL_CONFIG['smtp_port']) as server:
+                server.starttls()
+                server.login(EMAIL_CONFIG['sender_email'], EMAIL_CONFIG['sender_password'])
+                server.sendmail(EMAIL_CONFIG['sender_email'], [sms_recipient], msg.as_string())
+            
+            print(f"📱 SMS sent to {sms_recipient}")
+            break  # Only need one gateway to work
+        
+        return True
+    except Exception as e:
+        print(f"SMS failed: {e}")
+        return False
 
 def send_email(subject, body, draws_by_lottery=None):
     """Send cute HTML email report to all recipients."""
@@ -1101,6 +1179,11 @@ def send_email(subject, body, draws_by_lottery=None):
             server.sendmail(EMAIL_CONFIG['sender_email'], recipients, msg.as_string())
         
         print(f"💖 Email sent successfully to {len(recipients)} recipients: {', '.join(recipients)} 💖")
+        
+        # Also send SMS
+        if draws_by_lottery:
+            send_sms(draws_by_lottery)
+        
         return True
     except Exception as e:
         print(f"Failed to send email: {e}")

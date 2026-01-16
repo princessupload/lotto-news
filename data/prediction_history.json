@@ -1685,7 +1685,7 @@
       "main_matches": null,
       "bonus_match": null,
       "checked_at": null,
-      "updated_at": "2026-01-16T13:10:06.793579"
+      "updated_at": "2026-01-16T16:39:23.478732"
     },
     {
       "id": 9,
@@ -1936,7 +1936,7 @@
       "main_matches": null,
       "bonus_match": null,
       "checked_at": null,
-      "updated_at": "2026-01-16T13:10:06.836804"
+      "updated_at": "2026-01-16T16:39:23.521963"
     },
     {
       "id": 10,
@@ -2192,7 +2192,7 @@
       "main_matches": null,
       "bonus_match": null,
       "checked_at": null,
-      "updated_at": "2026-01-16T13:10:06.861022"
+      "updated_at": "2026-01-16T16:39:23.547719"
     },
     {
       "id": 11,
@@ -2389,7 +2389,7 @@
       "main_matches": null,
       "bonus_match": null,
       "checked_at": null,
-      "updated_at": "2026-01-16T13:10:06.750724"
+      "updated_at": "2026-01-16T16:39:23.437253"
     }
   ],
   "results": {
@@ -2466,7 +2466,7 @@
       "trend": 0
     }
   },
-  "lastUpdated": "2026-01-16T13:10:06.861022",
+  "lastUpdated": "2026-01-16T16:39:23.547719",
   "learned_weights": {
     "l4l": {
       "near_hit": 1,
