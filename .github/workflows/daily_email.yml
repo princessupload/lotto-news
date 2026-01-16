@@ -26,9 +26,7 @@ jobs:
       
       - name: Update lottery data
         run: python dual_source_updater.py
-        env:
-          GMAIL_USER: ${{ secrets.GMAIL_USER }}
-          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
+        continue-on-error: true
       
       - name: Send daily email
         run: python daily_email_report.py
@@ -40,6 +38,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add data/*.json
+          git add data/*.json || true
           git diff --staged --quiet || git commit -m "Auto-update lottery data $(date +'%Y-%m-%d')"
-          git push
+          git push || true
