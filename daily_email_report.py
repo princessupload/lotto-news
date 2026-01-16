@@ -626,7 +626,7 @@ def generate_report():
     
     report.append("\n" + "=" * 60)
     report.append("Report generated automatically by Lottery Analyzer")
-    report.append(f"Send to: {EMAIL_CONFIG['recipient']}")
+    report.append(f"Send to: {', '.join(EMAIL_CONFIG['recipients'])}")
     report.append("=" * 60)
     
     return subject, "\n".join(report), draws_by_lottery
