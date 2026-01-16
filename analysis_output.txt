@@ -1,0 +1,27 @@
+﻿================================================================================
+DEEP PATTERN ANALYSIS - CRITICAL EXAMINATION
+================================================================================
+
+================================================================================
+LUCKY FOR LIFE (1051 draws)
+================================================================================
+
+--- EXACT TICKET REPEATS ---
+  OK: No exact ticket has ever repeated (all 1051 unique)
+  OK: No exact jackpot (5+bonus) has ever repeated
+
+--- CONSECUTIVE DRAW MATCH ANALYSIS ---
+  Matches between consecutive draws:
+python : Traceback (most recent call last):
+At line:1 char:1
++ python deep_pattern_analysis.py 2>&1 | Out-File -FilePath analysis_ou ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "C:\Users\Slytherin\CascadeProjects\windsurf-project-3\lottery-tracker\deep_pattern_analysis.py", line 77, in 
+<module>
+    print(f"    {m}/5: {count:4d} times ({pct:5.1f}%) {bar}")
+  File "C:\ProgramData\Anaconda3\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 29-55: character maps to <undefined>

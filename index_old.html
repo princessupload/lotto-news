@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎰 Lottery Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;600&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, #F9A8D4 0%, #B0E0E6 50%, #87CEEB 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #000;
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(255,255,255,0.5);
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: #000;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .header-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .info-badge {
+            background: rgba(255,255,255,0.6);
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: #000;
+            font-size: 1em;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.8);
+            font-family: 'Libre Baskerville', serif;
+        }
+
+        .refresh-btn {
+            background: linear-gradient(135deg, #ff47bb 0%, #ff75cc 100%);
+            color: #FFF;
+            border: 2px solid #fff;
+            padding: 12px 28px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(255,71,187,0.4);
+            font-family: 'Libre Baskerville', serif;
+        }
+
+        .refresh-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255,71,187,0.6);
+            background: linear-gradient(135deg, #ff75cc 0%, #ff47bb 100%);
+        }
+
+        .refresh-btn:active {
+            transform: translateY(0);
+        }
+
+        .lottery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            animation: fadeIn 0.7s ease;
+        }
+
+        .lottery-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .lottery-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+            border-color: rgba(255,255,255,0.9);
+        }
+
+        .lottery-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+        }
+
+        .lottery-card.l4l::before {
+            background: linear-gradient(90deg, #ff47bb, #ff75cc);
+        }
+
+        .lottery-card.la::before {
+            background: linear-gradient(90deg, #7DD3FC, #B0E0E6);
+        }
+
+        .lottery-card.pb::before {
+            background: linear-gradient(90deg, #E31B23, #ff47bb);
+        }
+
+        .lottery-card.mm::before {
+            background: linear-gradient(90deg, #C0C0C0, #87CEEB);
+        }
+
+        .lottery-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .lottery-icon {
+            font-size: 2em;
+        }
+
+        .lottery-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6em;
+            font-weight: 700;
+            color: #000;
+            letter-spacing: 1px;
+        }
+
+        .draw-date {
+            font-family: 'Libre Baskerville', serif;
+            color: #444;
+            font-size: 1em;
+            margin-bottom: 18px;
+            opacity: 0.9;
+        }
+
+        .numbers-container {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .number-ball {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1em;
+            color: white;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            animation: bounceIn 0.6s ease;
+        }
+
+        .number-ball.main {
+            background: linear-gradient(135deg, #7DD3FC 0%, #B0E0E6 100%);
+            border: 2px solid rgba(255,255,255,0.8);
+        }
+
+        .number-ball.bonus {
+            background: linear-gradient(135deg, #ff47bb 0%, #ff75cc 100%);
+            position: relative;
+            border: 2px solid rgba(255,255,255,0.9);
+        }
+
+        .number-ball.bonus::before {
+            content: '★';
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            font-size: 0.6em;
+            color: #FFD700;
+        }
+
+        .jackpot-section {
+            background: linear-gradient(135deg, rgba(249,168,212,0.2) 0%, rgba(176,224,230,0.2) 100%);
+            padding: 18px;
+            border-radius: 15px;
+            margin-bottom: 18px;
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .jackpot-label {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 0.95em;
+            color: #444;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .jackpot-amount {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .next-draw {
+            text-align: center;
+            padding: 14px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 12px;
+            font-size: 1em;
+            color: #000;
+            font-family: 'Libre Baskerville', serif;
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+
+        .loading {
+            text-align: center;
+            color: white;
+            font-size: 1.2em;
+            margin-top: 50px;
+        }
+
+        .error {
+            background: #ff4444;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .lottery-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎰 Lottery Tracker</h1>
+            <p class="subtitle">Live draws & jackpots for all major lotteries</p>
+            <div class="header-info">
+                <span class="info-badge" id="last-update">Loading...</span>
+                <button class="refresh-btn" onclick="refreshData()">🔄 Refresh</button>
+            </div>
+        </header>
+
+        <div id="lottery-grid" class="lottery-grid">
+            <div class="loading">Loading lottery data...</div>
+        </div>
+    </div>
+
+    <script>
+        const LOTTERY_INFO = {
+            'L4L': { name: 'Lucky for Life', icon: '🎯', class: 'l4l' },
+            'LA': { name: 'Lotto America', icon: '🔵', class: 'la' },
+            'PB': { name: 'Powerball', icon: '🔴', class: 'pb' },
+            'MM': { name: 'Mega Millions', icon: '🟡', class: 'mm' }
+        };
+
+        async function loadData() {
+            try {
+                const response = await fetch('/api/latest');
+                if (!response.ok) throw new Error('Failed to fetch data');
+                
+                const data = await response.json();
+                displayData(data);
+                
+                const updateTime = new Date().toLocaleTimeString('en-US', { 
+                    hour: 'numeric', 
+                    minute: '2-digit' 
+                });
+                document.getElementById('last-update').textContent = `Updated ${updateTime}`;
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('lottery-grid').innerHTML = 
+                    '<div class="error">Failed to load lottery data. Please try refreshing.</div>';
+            }
+        }
+
+        function displayData(data) {
+            const grid = document.getElementById('lottery-grid');
+            grid.innerHTML = '';
+
+            for (const [key, lottery] of Object.entries(data)) {
+                if (key === 'timestamp') continue;
+
+                const info = LOTTERY_INFO[key];
+                if (!info) continue;
+
+                const card = createLotteryCard(key, lottery, info);
+                grid.appendChild(card);
+            }
+        }
+
+        function createLotteryCard(key, lottery, info) {
+            const card = document.createElement('div');
+            card.className = `lottery-card ${info.class}`;
+
+            const latest = lottery.latest || {};
+            const jackpot = lottery.jackpot || {};
+            
+            const dateStr = latest.date ? new Date(latest.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            }) : 'No data';
+
+            const numbersHTML = latest.main ? 
+                latest.main.map(n => `<div class="number-ball main">${n}</div>`).join('') +
+                `<div class="number-ball bonus">${latest.bonus}</div>` :
+                '<p style="text-align:center; color:#999;">No recent draws</p>';
+
+            const nextDrawDate = jackpot.nextDraw ? 
+                new Date(jackpot.nextDraw).toLocaleString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    hour: 'numeric',
+                    minute: '2-digit'
+                }) : 'TBA';
+
+            card.innerHTML = `
+                <div class="lottery-header">
+                    <span class="lottery-icon">${info.icon}</span>
+                    <span class="lottery-name">${info.name}</span>
+                </div>
+                <div class="draw-date">Latest Draw: ${dateStr}</div>
+                <div class="numbers-container">
+                    ${numbersHTML}
+                </div>
+                <div class="jackpot-section">
+                    <div class="jackpot-label">Current Jackpot</div>
+                    <div class="jackpot-amount">${jackpot.amount || 'N/A'}</div>
+                </div>
+                <div class="next-draw">
+                    Next Draw: ${nextDrawDate}
+                </div>
+            `;
+
+            return card;
+        }
+
+        async function refreshData() {
+            const btn = document.querySelector('.refresh-btn');
+            btn.textContent = '⏳ Refreshing...';
+            btn.disabled = true;
+
+            try {
+                await fetch('/api/refresh', { method: 'POST' });
+                await loadData();
+            } catch (error) {
+                console.error('Refresh failed:', error);
+            } finally {
+                btn.textContent = '🔄 Refresh';
+                btn.disabled = false;
+            }
+        }
+
+        // Load data on page load
+        loadData();
+
+        // Auto-refresh every 5 minutes
+        setInterval(loadData, 5 * 60 * 1000);
+    </script>
+</body>
+</html>
