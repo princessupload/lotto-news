@@ -2466,29 +2466,29 @@
       "trend": 0
     }
   },
-  "lastUpdated": "2026-01-16T16:39:23.547719",
+  "lastUpdated": "2026-01-16T21:40:25.377120",
   "learned_weights": {
     "l4l": {
       "near_hit": 1,
       "trend": 1,
       "repeat": 1,
-      "position_freq": 6,
-      "recency": 6,
-      "timing": 4
+      "position_freq": 7,
+      "recency": 7,
+      "timing": 3
     },
     "pb": {
-      "position_freq": 9,
-      "recency": 9,
+      "position_freq": 10,
+      "recency": 10,
       "pairs": 1,
       "near_hit": 1,
       "trend": 1
     },
     "la": {
-      "position_freq": 8,
-      "recency": 8,
-      "pairs": 8,
-      "near_hit": 2,
-      "trend": 2
+      "position_freq": 9,
+      "recency": 9,
+      "pairs": 9,
+      "near_hit": 1,
+      "trend": 1
     }
   }
 }

@@ -85,10 +85,6 @@ EMAIL_CONFIG = {
         'princessuploadie@gmail.com',
         'rick@gamingdatasystems.com'
     ],
-    'sms_recipients': [
-        '5054798802@tmomail.net',  # Tello uses T-Mobile network - SMS
-        '5054798802@tmomail.net'   # Tello MMS backup (same gateway)
-    ],
     'smtp_server': 'smtp.gmail.com',
     'smtp_port': 587,
     'sender_email': os.environ.get('GMAIL_USER', 'princessuploadie@gmail.com'),
@@ -615,12 +611,9 @@ def generate_report():
                 report.append(f"      Position {i+1}: {pos_pool}")
             
             report.append(f"\n   BONUS BALL POOL: {pools.get('bonus', [])}")
-            report.append(f"   HOT NUMBERS (NOT validated - ~1.0x): {pools.get('hot_numbers', [])}")
-            report.append(f"   LAST DRAW (NOT validated - ~10% repeat): {pools.get('last_draw', [])}")
-            
             report.append(f"\n   HOW TO BUILD YOUR TICKET:")
             report.append(f"   1. Pick 1 number from each position pool above (VALIDATED 2.5x)")
-            report.append(f"   2. Optionally include 1-2 from 'last draw' (minimal improvement)")
+            report.append(f"   2. Ensure ticket passes constraint filters (3+ decades, max 1 consecutive)")
             report.append(f"   3. Pick a bonus ball from the bonus pool")
             report.append(f"   4. Avoid picking the exact same ticket as others!")
     
@@ -841,7 +834,7 @@ body {{ font-family: Georgia, serif; background: #ffe4ec; margin: 0; padding: 20
         <p style="color: #2d2d2d; font-size: 13px; margin-bottom: 15px; line-height: 1.6; background: #fff0f3; padding: 12px; border-radius: 8px; border-left: 4px solid #c2185b;">
             <strong style="color: #b71c1c;">⭐ THESE ARE THE #1 TOP-SCORING TICKETS:</strong> Each ticket below is the absolute highest-scoring ticket for its lottery based on validated position frequency analysis.<br><br>
             <strong style="color: #880e4f;">PRIORITY:</strong> L4L (Score 394) → LA (Score 168) → PB (Score 129)<br>
-            <strong style="color: #880e4f;">VALIDATED METHOD:</strong> Position frequency is the ONLY validated method (2.5× improvement). Hot numbers, proven combos, and repeat patterns showed NO predictive improvement in backtesting.
+            <strong style="color: #880e4f;">VALIDATED METHOD:</strong> Position frequency analysis (2.5× improvement). Numbers that appear most often in each sorted position historically.
         </p>
 '''
     
@@ -963,8 +956,8 @@ body {{ font-family: Georgia, serif; background: #ffe4ec; margin: 0; padding: 20
                     <span class="schedule-value" style="color: #1b5e20; background: #c8e6c9; padding: 2px 6px; border-radius: 4px;">{nd_odds} vs random</span>
                 </div>
                 <div class="schedule-row">
-                    <span class="schedule-label" style="color: #1565c0;">📅 Last Draw Nums:</span>
-                    <span class="schedule-value">{nd['last_draw']} (~10% repeat)</span>
+                    <span class="schedule-label" style="color: #1565c0;">📊 Method:</span>
+                    <span class="schedule-value">Position frequency from optimal window</span>
                 </div>
             </div>
         </div>
@@ -1064,80 +1057,6 @@ body {{ font-family: Georgia, serif; background: #ffe4ec; margin: 0; padding: 20
     
     return html
 
-def generate_sms_message(draws_by_lottery):
-    """Generate a concise SMS message with HOLD/NEXT DRAW tickets and jackpots."""
-    jackpots = load_jackpots()
-    lines = ["🎰 LOTTERY UPDATE"]
-    
-    # Add HOLD tickets
-    lines.append("\n📌 HOLD:")
-    for lottery in ['l4l', 'la', 'pb']:
-        ticket = USER_HOLD_TICKETS.get(lottery, {})
-        main = ticket.get('main', [])
-        bonus = ticket.get('bonus', '')
-        name = {'l4l': 'L4L', 'la': 'LA', 'pb': 'PB'}.get(lottery, lottery.upper())
-        lines.append(f"{name}: {main}+{bonus}")
-    
-    # Add NEXT DRAW tickets
-    lines.append("\n🌟 NEXT:")
-    for lottery in ['l4l', 'la', 'pb', 'mm']:
-        draws = draws_by_lottery.get(lottery, [])
-        if draws:
-            nd = generate_next_draw_ticket(lottery, draws)
-            name = {'l4l': 'L4L', 'la': 'LA', 'pb': 'PB', 'mm': 'MM'}.get(lottery, lottery.upper())
-            lines.append(f"{name}: {nd['ticket']}+{nd['bonus']}")
-    
-    # Add latest drawings
-    lines.append("\n📊 LATEST:")
-    for lottery in ['l4l', 'la', 'pb', 'mm']:
-        draws = draws_by_lottery.get(lottery, [])
-        if draws:
-            latest = draws[0]
-            main = sorted(latest.get('main', []))
-            bonus = latest.get('bonus', '?')
-            date = latest.get('date', '?')[-5:]  # MM-DD
-            name = {'l4l': 'L4L', 'la': 'LA', 'pb': 'PB', 'mm': 'MM'}.get(lottery, lottery.upper())
-            lines.append(f"{name} {date}: {main}+{bonus}")
-    
-    # Add after-tax jackpots
-    lines.append("\n💰 JACKPOTS (after OK tax):")
-    for lottery in ['l4l', 'la', 'pb', 'mm']:
-        jp = jackpots.get(lottery, {})
-        cash = jp.get('cash_value', 0)
-        if cash:
-            after_tax = calculate_after_tax(cash)
-            name = {'l4l': 'L4L', 'la': 'LA', 'pb': 'PB', 'mm': 'MM'}.get(lottery, lottery.upper())
-            lines.append(f"{name}: {format_money(after_tax)}")
-    
-    return '\n'.join(lines)
-
-def send_sms(draws_by_lottery):
-    """Send SMS via email-to-SMS gateway."""
-    if not EMAIL_CONFIG.get('sms_recipients'):
-        return False
-    
-    try:
-        sms_body = generate_sms_message(draws_by_lottery)
-        
-        for sms_recipient in EMAIL_CONFIG['sms_recipients']:
-            msg = MIMEText(sms_body, 'plain', 'utf-8')
-            msg['From'] = EMAIL_CONFIG['sender_email']
-            msg['To'] = sms_recipient
-            msg['Subject'] = ''  # SMS doesn't use subject
-            
-            with smtplib.SMTP(EMAIL_CONFIG['smtp_server'], EMAIL_CONFIG['smtp_port']) as server:
-                server.starttls()
-                server.login(EMAIL_CONFIG['sender_email'], EMAIL_CONFIG['sender_password'])
-                server.sendmail(EMAIL_CONFIG['sender_email'], [sms_recipient], msg.as_string())
-            
-            print(f"📱 SMS sent to {sms_recipient}")
-            break  # Only need one gateway to work
-        
-        return True
-    except Exception as e:
-        print(f"SMS failed: {e}")
-        return False
-
 def send_email(subject, body, draws_by_lottery=None):
     """Send cute HTML email report to all recipients."""
     if not EMAIL_CONFIG['sender_email'] or not EMAIL_CONFIG['sender_password']:
@@ -1171,9 +1090,6 @@ def send_email(subject, body, draws_by_lottery=None):
         
         print(f"💖 Email sent successfully to {len(recipients)} recipients: {', '.join(recipients)} 💖")
         
-        # Also send SMS
-        if draws_by_lottery:
-            send_sms(draws_by_lottery)
         
         return True
     except Exception as e:
@@ -1182,6 +1098,9 @@ def send_email(subject, body, draws_by_lottery=None):
 
 def main():
     """Generate and send daily report."""
+    import sys
+    sys.stdout.reconfigure(encoding='utf-8')
+    
     print(f"\n{'='*60}")
     print(f"GENERATING DAILY REPORT - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"{'='*60}\n")
