@@ -702,12 +702,13 @@ def format_money(amount):
 
 def get_jackpot_ranking():
     """Rank lotteries by jackpot win probability based on our methods."""
-    # Based on pattern stability and verified improvement factors
+    # Ranked by: best base odds + improvement factor
+    # LA has best base odds (1:29M) AND best improvement (2.62x)
     return [
-        {'lottery': 'l4l', 'rank': 1, 'improvement': '2.0x', 'reason': 'Highest pattern stability (68.9%), daily draws, best odds base'},
-        {'lottery': 'la', 'rank': 2, 'improvement': '1.8x', 'reason': 'High stability (60%), strong position patterns'},
-        {'lottery': 'pb', 'rank': 3, 'improvement': '1.5x', 'reason': 'Moderate stability (46.7%), needs periodic review'},
-        {'lottery': 'mm', 'rank': 4, 'improvement': '1.2x', 'reason': 'Limited data (81 draws), use NEXT DRAW only'}
+        {'lottery': 'la', 'rank': 1, 'improvement': '2.62x', 'reason': 'BEST base odds (1:29M), highest improvement, only $1/ticket'},
+        {'lottery': 'l4l', 'rank': 2, 'improvement': '2.57x', 'reason': 'Daily draws, high stability (68.9%)'},
+        {'lottery': 'pb', 'rank': 3, 'improvement': '2.46x', 'reason': 'Big jackpots, moderate stability (46.7%)'},
+        {'lottery': 'mm', 'rank': 4, 'improvement': '~2.5x', 'reason': 'Limited data (81 draws), use NEXT DRAW only'}
     ]
 
 def generate_cute_html(subject, plain_body, draws_by_lottery):
@@ -834,7 +835,7 @@ body {{ font-family: Georgia, serif; background: #ffe4ec; margin: 0; padding: 20
         <div class="section-title" style="color: #880e4f;">🏆 YOUR TOP HOLD TICKETS - THE ABSOLUTE BEST!</div>
         <p style="color: #2d2d2d; font-size: 13px; margin-bottom: 15px; line-height: 1.6; background: #fff0f3; padding: 12px; border-radius: 8px; border-left: 4px solid #c2185b;">
             <strong style="color: #b71c1c;">⭐ THESE ARE THE #1 TOP-SCORING TICKETS:</strong> Each ticket below is the absolute highest-scoring ticket for its lottery based on validated position frequency analysis.<br><br>
-            <strong style="color: #880e4f;">PRIORITY:</strong> L4L (Score 394) → LA (Score 168) → PB (Score 129)<br>
+            <strong style="color: #880e4f;">PRIORITY:</strong> LA (Best odds 1:11M) → L4L (Daily draws) → PB (Big jackpot)<br>
             <strong style="color: #880e4f;">VALIDATED METHOD:</strong> Position frequency analysis (2.5× improvement). Numbers that appear most often in each sorted position historically.
         </p>
 '''
@@ -977,9 +978,9 @@ body {{ font-family: Georgia, serif; background: #ffe4ec; margin: 0; padding: 20
         <div style="background: #ffebee; border: 3px solid #c62828; border-radius: 12px; padding: 15px; margin-bottom: 15px;">
             <p style="font-size: 14px; color: #2d2d2d; line-height: 1.7; margin: 0;">
                 <strong style="color: #b71c1c; font-size: 16px;">⭐ ALWAYS PLAY THESE 3 HOLD TICKETS:</strong><br>
-                <span style="color: #2d2d2d;">1️⃣ <strong>Lucky for Life</strong> - Best odds (2.0x improvement, 68.9% stable)</span><br>
-                <span style="color: #2d2d2d;">2️⃣ <strong>Lotto America</strong> - Second best (1.8x improvement, 60% stable)</span><br>
-                <span style="color: #2d2d2d;">3️⃣ <strong>Powerball</strong> - Third best (1.5x improvement, 46.7% stable)</span><br><br>
+                <span style="color: #2d2d2d;">1️⃣ <strong>Lotto America</strong> - BEST value ($1, 2.62x improvement, 1:11M odds)</span><br>
+                <span style="color: #2d2d2d;">2️⃣ <strong>Lucky for Life</strong> - Daily draws (2.57x improvement, 1:12M odds)</span><br>
+                <span style="color: #2d2d2d;">3️⃣ <strong>Powerball</strong> - Big jackpots (2.46x improvement, 1:119M odds)</span><br><br>
                 <span style="color: #5d4037;">These are your PERMANENT tickets - play them EVERY draw! They use all-time position frequency patterns that consistently outperform random selection.</span>
             </p>
         </div>
@@ -996,10 +997,10 @@ body {{ font-family: Georgia, serif; background: #ffe4ec; margin: 0; padding: 20
         <div class="prize-box">
             <div class="prize-title" style="color: #2d2d2d;">💰 Your Improved Odds</div>
             <div class="prize-grid" style="color: #2d2d2d;">
-                <div><strong style="color: #880e4f;">Lucky for Life:</strong> ~2.0x better</div>
-                <div><strong style="color: #880e4f;">Lotto America:</strong> ~1.8x better</div>
-                <div><strong style="color: #880e4f;">Powerball:</strong> ~1.5x better</div>
-                <div><strong style="color: #880e4f;">Mega Millions:</strong> ~1.2x better</div>
+                <div><strong style="color: #880e4f;">Lotto America:</strong> 2.62x (HOLD) / 2.53x (NEXT)</div>
+                <div><strong style="color: #880e4f;">Lucky for Life:</strong> 2.57x (HOLD) / 2.56x (NEXT)</div>
+                <div><strong style="color: #880e4f;">Powerball:</strong> 2.46x (HOLD) / 2.80x (NEXT)</div>
+                <div><strong style="color: #880e4f;">Mega Millions:</strong> ~2.5x (HOLD) / ~2.0x (NEXT)</div>
             </div>
             <p style="font-size: 12px; color: #2d2d2d; margin-top: 10px; line-height: 1.5;">
                 These improvements are verified through walk-forward backtesting on historical data. HOLD tickets are best for jackpot hunting because they leverage stable all-time patterns.
