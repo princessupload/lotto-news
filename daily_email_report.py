@@ -49,6 +49,14 @@ POSITION_FREQ_IMPROVEMENT = {
     'mm': '~2.5x'    # Limited data (81 draws), estimated
 }
 
+# NEXT DRAW improvement factors (lower than HOLD due to shorter windows)
+NEXT_DRAW_ODDS = {
+    'l4l': '1.5x',
+    'la': '1.4x',
+    'pb': '1.3x',
+    'mm': '1.2x'
+}
+
 # Oklahoma tax rates for lottery winnings
 FEDERAL_TAX_RATE = 0.24  # 24% federal
 OK_STATE_TAX_RATE = 0.0475  # 4.75% Oklahoma
