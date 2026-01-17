@@ -2,156 +2,163 @@
   "l4l": {
     "lottery": "l4l",
     "name": "Lucky for Life",
-    "updated": "2026-01-16T21:39:27.078696",
-    "total_draws": 1052,
+    "updated": "2026-01-16T22:09:27.730796",
+    "total_draws": 1053,
     "last_draw": {
       "main": [
-        3,
-        24,
-        32,
-        39,
-        41
+        4,
+        6,
+        9,
+        14,
+        17
       ],
-      "bonus": 18,
-      "date": "2026-01-15"
+      "bonus": 17,
+      "date": "2026-01-16"
     },
     "overdue_numbers": [
       {
         "number": 22,
-        "current_gap": 42,
+        "current_gap": 43,
         "avg_gap": 9.6,
-        "ratio": 4.36,
+        "ratio": 4.46,
         "status": "VERY_OVERDUE"
       },
       {
         "number": 18,
-        "current_gap": 32,
+        "current_gap": 33,
         "avg_gap": 9.3,
-        "ratio": 3.44,
+        "ratio": 3.55,
         "status": "VERY_OVERDUE"
       },
       {
         "number": 33,
-        "current_gap": 31,
+        "current_gap": 32,
         "avg_gap": 9.4,
-        "ratio": 3.29,
+        "ratio": 3.4,
         "status": "VERY_OVERDUE"
       },
       {
         "number": 35,
-        "current_gap": 32,
+        "current_gap": 33,
         "avg_gap": 10.3,
-        "ratio": 3.12,
+        "ratio": 3.21,
         "status": "VERY_OVERDUE"
       },
       {
         "number": 46,
-        "current_gap": 23,
+        "current_gap": 24,
         "avg_gap": 8.3,
-        "ratio": 2.76,
+        "ratio": 2.88,
         "status": "VERY_OVERDUE"
       },
       {
         "number": 11,
-        "current_gap": 24,
+        "current_gap": 25,
         "avg_gap": 10.1,
-        "ratio": 2.36,
-        "status": "VERY_OVERDUE"
-      },
-      {
-        "number": 4,
-        "current_gap": 22,
-        "avg_gap": 9.5,
-        "ratio": 2.32,
+        "ratio": 2.46,
         "status": "VERY_OVERDUE"
       },
       {
         "number": 37,
-        "current_gap": 20,
+        "current_gap": 21,
         "avg_gap": 9.6,
-        "ratio": 2.08,
-        "status": "VERY_OVERDUE"
-      },
-      {
-        "number": 29,
-        "current_gap": 20,
-        "avg_gap": 9.9,
-        "ratio": 2.02,
+        "ratio": 2.19,
         "status": "VERY_OVERDUE"
       },
       {
         "number": 34,
-        "current_gap": 17,
+        "current_gap": 18,
         "avg_gap": 8.4,
-        "ratio": 2.02,
+        "ratio": 2.14,
+        "status": "VERY_OVERDUE"
+      },
+      {
+        "number": 29,
+        "current_gap": 21,
+        "avg_gap": 9.9,
+        "ratio": 2.12,
         "status": "VERY_OVERDUE"
       },
       {
         "number": 16,
-        "current_gap": 16,
+        "current_gap": 17,
         "avg_gap": 9.9,
-        "ratio": 1.62,
-        "status": "OVERDUE"
-      },
-      {
-        "number": 9,
-        "current_gap": 12,
-        "avg_gap": 8.0,
-        "ratio": 1.51,
+        "ratio": 1.72,
         "status": "OVERDUE"
       },
       {
         "number": 26,
-        "current_gap": 14,
+        "current_gap": 15,
         "avg_gap": 10.0,
-        "ratio": 1.4,
-        "status": "DUE"
+        "ratio": 1.5,
+        "status": "OVERDUE"
       },
       {
         "number": 25,
-        "current_gap": 12,
+        "current_gap": 13,
         "avg_gap": 9.4,
+        "ratio": 1.38,
+        "status": "DUE"
+      },
+      {
+        "number": 20,
+        "current_gap": 13,
+        "avg_gap": 10.2,
         "ratio": 1.28,
+        "status": "DUE"
+      },
+      {
+        "number": 1,
+        "current_gap": 12,
+        "avg_gap": 9.5,
+        "ratio": 1.26,
+        "status": "DUE"
+      },
+      {
+        "number": 47,
+        "current_gap": 11,
+        "avg_gap": 9.1,
+        "ratio": 1.21,
         "status": "DUE"
       }
     ],
     "repeat_candidates": [
       {
-        "number": 3,
-        "repeat_count": 15,
-        "total_appearances": 131,
-        "repeat_rate": 11.5
+        "number": 9,
+        "repeat_count": 21,
+        "total_appearances": 132,
+        "repeat_rate": 15.9
       },
       {
-        "number": 39,
-        "repeat_count": 11,
-        "total_appearances": 115,
-        "repeat_rate": 9.6
+        "number": 17,
+        "repeat_count": 20,
+        "total_appearances": 125,
+        "repeat_rate": 16.0
       },
       {
-        "number": 24,
+        "number": 4,
+        "repeat_count": 13,
+        "total_appearances": 110,
+        "repeat_rate": 11.8
+      },
+      {
+        "number": 6,
+        "repeat_count": 13,
+        "total_appearances": 96,
+        "repeat_rate": 13.5
+      },
+      {
+        "number": 14,
         "repeat_count": 10,
-        "total_appearances": 109,
-        "repeat_rate": 9.2
-      },
-      {
-        "number": 41,
-        "repeat_count": 9,
-        "total_appearances": 98,
-        "repeat_rate": 9.2
-      },
-      {
-        "number": 32,
-        "repeat_count": 7,
-        "total_appearances": 98,
-        "repeat_rate": 7.1
+        "total_appearances": 102,
+        "repeat_rate": 9.8
       }
     ],
     "repeat_status": {
-      "draws_since_last_repeat": 1,
+      "draws_since_last_repeat": 2,
       "avg_gap_between_repeats": 2.2,
       "repeat_rate": 45.2,
-      "expect_repeat_soon": false
+      "expect_repeat_soon": true
     },
     "due_combos": [
       {
@@ -161,7 +168,7 @@
           20
         ],
         "times_appeared": 2,
-        "last_seen": 12,
+        "last_seen": 13,
         "avg_gap": 7.0,
         "expected_in": 0
       },
@@ -172,7 +179,7 @@
           24
         ],
         "times_appeared": 2,
-        "last_seen": 19,
+        "last_seen": 20,
         "avg_gap": 8.0,
         "expected_in": 0
       },
@@ -183,7 +190,7 @@
           39
         ],
         "times_appeared": 2,
-        "last_seen": 29,
+        "last_seen": 30,
         "avg_gap": 7.0,
         "expected_in": 0
       },
@@ -194,7 +201,7 @@
           16
         ],
         "times_appeared": 2,
-        "last_seen": 48,
+        "last_seen": 49,
         "avg_gap": 10.0,
         "expected_in": 0
       },
@@ -205,7 +212,7 @@
           40
         ],
         "times_appeared": 3,
-        "last_seen": 64,
+        "last_seen": 65,
         "avg_gap": 42.0,
         "expected_in": 0
       },
@@ -216,7 +223,7 @@
           32
         ],
         "times_appeared": 2,
-        "last_seen": 69,
+        "last_seen": 70,
         "avg_gap": 16.0,
         "expected_in": 0
       },
@@ -227,7 +234,7 @@
           46
         ],
         "times_appeared": 2,
-        "last_seen": 74,
+        "last_seen": 75,
         "avg_gap": 19.0,
         "expected_in": 0
       },
@@ -238,7 +245,7 @@
           42
         ],
         "times_appeared": 2,
-        "last_seen": 75,
+        "last_seen": 76,
         "avg_gap": 20.0,
         "expected_in": 0
       },
@@ -249,7 +256,7 @@
           24
         ],
         "times_appeared": 2,
-        "last_seen": 78,
+        "last_seen": 79,
         "avg_gap": 43.0,
         "expected_in": 0
       },
@@ -260,7 +267,7 @@
           30
         ],
         "times_appeared": 2,
-        "last_seen": 80,
+        "last_seen": 81,
         "avg_gap": 58.0,
         "expected_in": 0
       }
@@ -268,20 +275,20 @@
     "position_analysis": [
       {
         "position": 1,
-        "last_number": 3,
-        "avg_return_gap": 9.8,
+        "last_number": 4,
+        "avg_return_gap": 15.2,
         "top_numbers": [
           3,
           8,
           1,
           5,
-          9
+          4
         ]
       },
       {
         "position": 2,
-        "last_number": 24,
-        "avg_return_gap": 34.1,
+        "last_number": 6,
+        "avg_return_gap": 28.6,
         "top_numbers": [
           12,
           8,
@@ -292,32 +299,32 @@
       },
       {
         "position": 3,
-        "last_number": 32,
-        "avg_return_gap": 23.3,
+        "last_number": 9,
+        "avg_return_gap": 72.1,
         "top_numbers": [
           32,
-          24,
           23,
+          24,
           15,
           30
         ]
       },
       {
         "position": 4,
-        "last_number": 39,
-        "avg_return_gap": 17.8,
+        "last_number": 14,
+        "avg_return_gap": 135.1,
         "top_numbers": [
           34,
           24,
-          30,
           25,
-          40
+          40,
+          30
         ]
       },
       {
         "position": 5,
-        "last_number": 41,
-        "avg_return_gap": 21.5,
+        "last_number": 17,
+        "avg_return_gap": 807.0,
         "top_numbers": [
           45,
           46,
@@ -330,35 +337,41 @@
     "overdue_bonus": [
       {
         "bonus": 4,
-        "current_gap": 38,
+        "current_gap": 39,
         "avg_gap": 17.3,
-        "ratio": 2.19
+        "ratio": 2.25
       },
       {
         "bonus": 6,
-        "current_gap": 36,
+        "current_gap": 37,
         "avg_gap": 16.5,
-        "ratio": 2.19
+        "ratio": 2.25
       },
       {
         "bonus": 11,
-        "current_gap": 29,
+        "current_gap": 30,
         "avg_gap": 13.4,
-        "ratio": 2.17
+        "ratio": 2.24
+      },
+      {
+        "bonus": 14,
+        "current_gap": 27,
+        "avg_gap": 22.3,
+        "ratio": 1.21
       }
     ],
     "bonus_repeat_rate": 4.8,
     "timing_prediction": {
       "main": [
         2,
-        3,
         9,
         15,
+        17,
         18
       ],
       "bonus": 4,
       "reasoning": [
-        "Repeat candidates from last draw: [3, 39]",
+        "Repeat candidates from last draw: [9, 17]",
         "Overdue numbers: [22, 18, 33]",
         "Due 3-combos: [[9, 15, 20], [2, 9, 24]]"
       ]
@@ -367,7 +380,7 @@
   "la": {
     "lottery": "la",
     "name": "Lotto America",
-    "updated": "2026-01-16T21:39:27.125568",
+    "updated": "2026-01-16T22:09:27.768234",
     "total_draws": 431,
     "last_draw": {
       "main": [
@@ -719,7 +732,7 @@
   "pb": {
     "lottery": "pb",
     "name": "Powerball",
-    "updated": "2026-01-16T21:39:27.140366",
+    "updated": "2026-01-16T22:09:27.782356",
     "total_draws": 431,
     "last_draw": {
       "main": [
@@ -1103,7 +1116,7 @@
   "mm": {
     "lottery": "mm",
     "name": "Mega Millions",
-    "updated": "2026-01-16T21:39:27.157658",
+    "updated": "2026-01-16T22:09:27.800592",
     "total_draws": 81,
     "last_draw": {
       "main": [

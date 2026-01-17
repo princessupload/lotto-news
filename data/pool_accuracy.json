@@ -2,30 +2,30 @@
   "tracking_started": "2026-01-13",
   "lotteries": {
     "l4l": {
-      "total_draws_tracked": 3,
+      "total_draws_tracked": 4,
       "position_hits": [
-        1,
+        2,
         0,
         2,
         1,
         0
       ],
       "position_attempts": [
-        3,
-        3,
-        3,
-        3,
-        3
+        4,
+        4,
+        4,
+        4,
+        4
       ],
-      "bonus_hits": 0,
-      "bonus_attempts": 3,
+      "bonus_hits": 1,
+      "bonus_attempts": 4,
       "potential_jackpots": 0,
       "partial_matches": {
         "5": 0,
         "4": 0,
         "3": 1,
         "2": 0,
-        "1": 1,
+        "1": 2,
         "0": 1
       },
       "history": [
@@ -86,6 +86,26 @@
             false,
             true,
             true,
+            false
+          ]
+        },
+        {
+          "date": "2026-01-16",
+          "actual": [
+            4,
+            6,
+            9,
+            14,
+            17
+          ],
+          "bonus": 17,
+          "hits": 1,
+          "bonus_hit": true,
+          "position_hits": [
+            true,
+            false,
+            false,
+            false,
             false
           ]
         }

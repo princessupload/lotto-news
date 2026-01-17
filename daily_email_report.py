@@ -49,12 +49,12 @@ POSITION_FREQ_IMPROVEMENT = {
     'mm': '~2.5x'    # Limited data (81 draws), estimated
 }
 
-# NEXT DRAW improvement factors (lower than HOLD due to shorter windows)
+# NEXT DRAW improvement factors (optimized window=200 for all except MM)
 NEXT_DRAW_ODDS = {
-    'l4l': '1.5x',
-    'la': '1.4x',
-    'pb': '1.3x',
-    'mm': '1.2x'
+    'l4l': '2.56x',
+    'la': '2.53x',
+    'pb': '2.80x',
+    'mm': '~2.0x'
 }
 
 # Oklahoma tax rates for lottery winnings
@@ -63,11 +63,12 @@ OK_STATE_TAX_RATE = 0.0475  # 4.75% Oklahoma
 TOTAL_TAX_RATE = FEDERAL_TAX_RATE + OK_STATE_TAX_RATE  # 28.75% total
 
 # Lottery-specific strategy based on pattern stability analysis
+# NEXT PLAY windows optimized via walk-forward testing (Jan 16, 2026)
 LOTTERY_STRATEGIES = {
-    'l4l': {'strategy': 'PERMANENT HOLD', 'stability': 68.9, 'draws': 1052, 'use_hold': True, 'optimal_window': 400},
-    'la':  {'strategy': 'PERMANENT HOLD', 'stability': 60.0, 'draws': 431, 'use_hold': True, 'optimal_window': 150},
-    'pb':  {'strategy': 'HOLD + REVIEW', 'stability': 46.7, 'draws': 431, 'use_hold': True, 'review_every': 200, 'optimal_window': 100},
-    'mm':  {'strategy': 'NEXT-DRAW ONLY', 'stability': None, 'draws': 81, 'use_hold': False, 'optimal_window': 30}
+    'l4l': {'strategy': 'PERMANENT HOLD', 'stability': 68.9, 'draws': 1052, 'use_hold': True, 'optimal_window': 200, 'next_play_improvement': '2.56x'},
+    'la':  {'strategy': 'PERMANENT HOLD', 'stability': 60.0, 'draws': 431, 'use_hold': True, 'optimal_window': 200, 'next_play_improvement': '2.53x'},
+    'pb':  {'strategy': 'HOLD + REVIEW', 'stability': 46.7, 'draws': 431, 'use_hold': True, 'review_every': 200, 'optimal_window': 200, 'next_play_improvement': '2.80x'},
+    'mm':  {'strategy': 'NEXT-DRAW ONLY', 'stability': None, 'draws': 81, 'use_hold': False, 'optimal_window': 30, 'next_play_improvement': '~2.0x'}
 }
 
 # Lottery configurations
