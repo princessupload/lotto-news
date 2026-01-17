@@ -69,11 +69,11 @@ POSITION_FREQ_IMPROVEMENT = {
     'mm': '~2.5x'    # Limited data (81 draws), estimated
 }
 
-# NEXT DRAW improvement factors (optimized window=200 for all except MM)
+# NEXT DRAW improvement factors (walk-forward tested optimal windows)
 NEXT_DRAW_ODDS = {
-    'l4l': '2.56x',
-    'la': '2.53x',
-    'pb': '2.80x',
+    'l4l': '2.56x',  # Window 200
+    'la': '2.53x',   # Window 200
+    'pb': '2.06x',   # Window 300 (was 2.80x - WRONG!)
     'mm': '~2.0x'
 }
 
@@ -88,7 +88,7 @@ LOTTERY_STRATEGIES = {
     'l4l': {'strategy': 'PERMANENT HOLD', 'stability': 68.9, 'draws': 1052, 'use_hold': True, 'optimal_window': 200, 'next_play_improvement': '2.56x'},
     'la':  {'strategy': 'PERMANENT HOLD', 'stability': 60.0, 'draws': 431, 'use_hold': True, 'optimal_window': 200, 'next_play_improvement': '2.53x'},
     'pb':  {'strategy': 'HOLD + REVIEW', 'stability': 46.7, 'draws': 431, 'use_hold': True, 'review_every': 200, 'optimal_window': 300, 'next_play_improvement': '2.06x'},  # Window 300 is best for PB
-    'mm':  {'strategy': 'NEXT-DRAW ONLY', 'stability': None, 'draws': 81, 'use_hold': False, 'optimal_window': 30, 'next_play_improvement': '~2.0x'}
+    'mm':  {'strategy': 'NEXT-DRAW ONLY', 'stability': None, 'draws': 81, 'use_hold': False, 'optimal_window': 81, 'next_play_improvement': '~1.6x'}  # Use ALL data for MM
 }
 
 # Lottery configurations
@@ -1047,10 +1047,10 @@ body {{ font-family: Georgia, serif; background: #ffe4ec; margin: 0; padding: 20
         <div class="prize-box">
             <div class="prize-title" style="color: #2d2d2d;">💰 Your Improved Odds</div>
             <div class="prize-grid" style="color: #2d2d2d;">
-                <div><strong style="color: #880e4f;">Lotto America:</strong> 2.62x (HOLD) / 2.53x (NEXT)</div>
-                <div><strong style="color: #880e4f;">Lucky for Life:</strong> 2.57x (HOLD) / 2.56x (NEXT)</div>
-                <div><strong style="color: #880e4f;">Powerball:</strong> 2.46x (HOLD) / 2.80x (NEXT)</div>
-                <div><strong style="color: #880e4f;">Mega Millions:</strong> ~2.5x (HOLD) / ~2.0x (NEXT)</div>
+                <div><strong style="color: #880e4f;">Lotto America:</strong> 2.62x (HOLD) / 2.53x (NEXT) - HOLD wins</div>
+                <div><strong style="color: #880e4f;">Lucky for Life:</strong> 2.57x (HOLD) / 2.56x (NEXT) - HOLD wins</div>
+                <div><strong style="color: #880e4f;">Powerball:</strong> 2.46x (HOLD) / 2.06x (NEXT) - HOLD wins</div>
+                <div><strong style="color: #880e4f;">Mega Millions:</strong> ~2.5x (HOLD) / ~1.6x (NEXT) - HOLD wins</div>
             </div>
             <p style="font-size: 12px; color: #2d2d2d; margin-top: 10px; line-height: 1.5;">
                 These improvements are verified through walk-forward backtesting on historical data. HOLD tickets are best for jackpot hunting because they leverage stable all-time patterns.
