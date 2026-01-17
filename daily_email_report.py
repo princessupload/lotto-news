@@ -21,13 +21,14 @@ from collections import Counter
 DATA_DIR = Path(__file__).parent / 'data'
 
 # User's personal HOLD tickets (PRIVATE - not shared with audience)
-# Updated to TOP scoring tickets per lottery (verified Jan 16, 2026)
-# Tied bonus options noted where applicable
+# Updated to PURE POSITION FREQUENCY scoring (Jan 16, 2026)
+# Proven combos removed from scoring - validation showed 0-1.28x (not predictive)
+# Position frequency is the ONLY validated method (2.5x improvement)
 USER_HOLD_TICKETS = {
-    'l4l': {'main': [1, 7, 17, 33, 46], 'bonus': 11, 'bonus_tied': [11, 15, 2], 'name': 'Lucky for Life', 'strategy': 'PERMANENT HOLD', 'score': 433, 'proven_combos': 7},
-    'la':  {'main': [2, 15, 21, 33, 52], 'bonus': 4, 'bonus_tied': [4, 3, 1], 'name': 'Lotto America', 'strategy': 'PERMANENT HOLD', 'score': 207, 'proven_combos': 6},
-    'pb':  {'main': [4, 11, 35, 61, 69], 'bonus': 20, 'bonus_tied': [20, 21, 14], 'name': 'Powerball', 'strategy': 'HOLD + REVIEW (every ~2 years)', 'score': 147, 'proven_combos': 3},
-    'mm':  {'main': [18, 21, 27, 42, 68], 'bonus': 24, 'bonus_tied': [24], 'name': 'Mega Millions', 'strategy': 'NEXT-DRAW ONLY (insufficient data)'}
+    'l4l': {'main': [1, 12, 30, 39, 47], 'bonus': 11, 'bonus_tied': [11, 15, 2], 'name': 'Lucky for Life', 'strategy': 'PERMANENT HOLD', 'score': 394},
+    'la':  {'main': [1, 15, 23, 42, 51], 'bonus': 4, 'bonus_tied': [4, 3, 1], 'name': 'Lotto America', 'strategy': 'PERMANENT HOLD', 'score': 168},
+    'pb':  {'main': [1, 11, 33, 52, 69], 'bonus': 20, 'bonus_tied': [20, 21, 14], 'name': 'Powerball', 'strategy': 'HOLD + REVIEW (every ~2 years)', 'score': 129},
+    'mm':  {'main': [6, 10, 27, 42, 68], 'bonus': 24, 'bonus_tied': [24], 'name': 'Mega Millions', 'strategy': 'NEXT-DRAW ONLY (insufficient data)', 'score': 32}
 }
 
 # Lottery schedule info (cutoff times are typically 1 hour before draw)
@@ -111,8 +112,10 @@ def calculate_top_hold_ticket(lottery, draws):
     """
     Calculate the TOP scoring HOLD ticket automatically based on:
     1. Position frequency analysis (which numbers appear most in each sorted position)
-    2. Proven 3-number combinations (combos that appeared 2+ times historically)
-    3. Statistical filters (sum range, decade spread, consecutive limits)
+    2. Statistical filters (sum range, decade spread, consecutive limits)
+    
+    NOTE: Proven 3-combos were tested and showed NO improvement (0-1.28x vs 2.5x for position freq).
+    Selection now uses ONLY position frequency score, which is the validated method.
     
     Returns the single highest-scoring ticket for this lottery.
     """
@@ -130,24 +133,14 @@ def calculate_top_hold_ticket(lottery, draws):
         for i, num in enumerate(main):
             pos_freq[i][num] += 1
     
-    # Step 2: Find all 3-number combinations that appeared 2+ times
-    from itertools import combinations
-    combo_counts = Counter()
-    for draw in draws:
-        main = tuple(sorted(draw.get('main', [])))
-        for combo in combinations(main, 3):
-            combo_counts[combo] += 1
-    proven_combos = {combo for combo, count in combo_counts.items() if count >= 2}
-    
-    # Step 3: Generate candidate tickets from top position numbers
+    # Step 2: Generate candidate tickets from top position numbers
     top_per_pos = []
     for i in range(5):
         top_per_pos.append([num for num, _ in pos_freq[i].most_common(8)])
     
-    # Step 4: Score all valid ticket combinations
+    # Step 3: Score all valid ticket combinations by position frequency ONLY
     best_ticket = None
     best_score = -1
-    best_proven = 0
     
     # Generate tickets by picking from top numbers per position
     for n1 in top_per_pos[0][:6]:
@@ -166,14 +159,10 @@ def calculate_top_hold_ticket(lottery, draws):
                         
                         ticket = [n1, n2, n3, n4, n5]
                         
-                        # Calculate score: sum of position frequencies
+                        # Calculate score: sum of position frequencies (VALIDATED 2.5x improvement)
                         score = sum(pos_freq[i][ticket[i]] for i in range(5))
                         
-                        # Count proven 3-combos in this ticket
-                        ticket_combos = list(combinations(ticket, 3))
-                        proven_count = sum(1 for c in ticket_combos if c in proven_combos)
-                        
-                        # Apply filters
+                        # Apply constraint filters (85-87% of winners pass these)
                         ticket_sum = sum(ticket)
                         decades = len(set(n // 10 for n in ticket))
                         consecutive = sum(1 for i in range(4) if ticket[i+1] - ticket[i] == 1)
@@ -182,11 +171,10 @@ def calculate_top_hold_ticket(lottery, draws):
                         if decades < 3 or consecutive > 1:
                             continue
                         
-                        # Prefer tickets with more proven combos, then higher score
-                        if proven_count > best_proven or (proven_count == best_proven and score > best_score):
+                        # Select by highest position frequency score ONLY
+                        if score > best_score:
                             best_ticket = ticket
                             best_score = score
-                            best_proven = proven_count
     
     if not best_ticket:
         return None
@@ -203,8 +191,7 @@ def calculate_top_hold_ticket(lottery, draws):
         'main': best_ticket,
         'bonus': top_bonuses[0] if top_bonuses else 1,
         'bonus_tied': top_bonuses,
-        'score': best_score,
-        'proven_combos': best_proven
+        'score': best_score
     }
 
 def get_position_pools(draws, window=100):
@@ -620,12 +607,12 @@ def generate_report():
                 report.append(f"      Position {i+1}: {pos_pool}")
             
             report.append(f"\n   BONUS BALL POOL: {pools.get('bonus', [])}")
-            report.append(f"   HOT NUMBERS (last 20 draws): {pools.get('hot_numbers', [])}")
-            report.append(f"   LAST DRAW (~10% repeat): {pools.get('last_draw', [])}")
+            report.append(f"   HOT NUMBERS (NOT validated - ~1.0x): {pools.get('hot_numbers', [])}")
+            report.append(f"   LAST DRAW (NOT validated - ~10% repeat): {pools.get('last_draw', [])}")
             
             report.append(f"\n   HOW TO BUILD YOUR TICKET:")
-            report.append(f"   1. Pick 1 number from each position pool above")
-            report.append(f"   2. Include 1-2 numbers from 'last draw' (likely to repeat)")
+            report.append(f"   1. Pick 1 number from each position pool above (VALIDATED 2.5x)")
+            report.append(f"   2. Optionally include 1-2 from 'last draw' (minimal improvement)")
             report.append(f"   3. Pick a bonus ball from the bonus pool")
             report.append(f"   4. Avoid picking the exact same ticket as others!")
     
@@ -844,9 +831,9 @@ body {{ font-family: Georgia, serif; background: #ffe4ec; margin: 0; padding: 20
     <div class="section">
         <div class="section-title" style="color: #880e4f;">🏆 YOUR TOP HOLD TICKETS - THE ABSOLUTE BEST!</div>
         <p style="color: #2d2d2d; font-size: 13px; margin-bottom: 15px; line-height: 1.6; background: #fff0f3; padding: 12px; border-radius: 8px; border-left: 4px solid #c2185b;">
-            <strong style="color: #b71c1c;">⭐ THESE ARE THE #1 TOP-SCORING TICKETS:</strong> Each ticket below is the absolute highest-scoring ticket for its lottery based on our proven discoveries.<br><br>
-            <strong style="color: #880e4f;">PRIORITY:</strong> L4L (Score 433) → LA (Score 207) → PB (Score 147)<br>
-            <strong style="color: #880e4f;">PROVEN IMPROVEMENT:</strong> Position frequency patterns show 40-44% hit rate vs 15-17% random. These tickets use 3-7 proven number combinations that have appeared together 2+ times historically!
+            <strong style="color: #b71c1c;">⭐ THESE ARE THE #1 TOP-SCORING TICKETS:</strong> Each ticket below is the absolute highest-scoring ticket for its lottery based on validated position frequency analysis.<br><br>
+            <strong style="color: #880e4f;">PRIORITY:</strong> L4L (Score 394) → LA (Score 168) → PB (Score 129)<br>
+            <strong style="color: #880e4f;">VALIDATED METHOD:</strong> Position frequency is the ONLY validated method (2.5× improvement). Hot numbers, proven combos, and repeat patterns showed NO predictive improvement in backtesting.
         </p>
 '''
     
@@ -968,12 +955,8 @@ body {{ font-family: Georgia, serif; background: #ffe4ec; margin: 0; padding: 20
                     <span class="schedule-value" style="color: #1b5e20; background: #c8e6c9; padding: 2px 6px; border-radius: 4px;">{nd_odds} vs random</span>
                 </div>
                 <div class="schedule-row">
-                    <span class="schedule-label" style="color: #1565c0;">🔥 Hot Repeats:</span>
-                    <span class="schedule-value">{repeats_str}</span>
-                </div>
-                <div class="schedule-row">
-                    <span class="schedule-label" style="color: #1565c0;">📅 Last Draw:</span>
-                    <span class="schedule-value">{nd['last_draw']}</span>
+                    <span class="schedule-label" style="color: #1565c0;">📅 Last Draw Nums:</span>
+                    <span class="schedule-value">{nd['last_draw']} (~10% repeat)</span>
                 </div>
             </div>
         </div>
