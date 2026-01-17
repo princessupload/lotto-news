@@ -25,10 +25,30 @@ DATA_DIR = Path(__file__).parent / 'data'
 # Proven combos removed from scoring - validation showed 0-1.28x (not predictive)
 # Position frequency is the ONLY validated method (2.5x improvement)
 USER_HOLD_TICKETS = {
-    'l4l': {'main': [1, 12, 30, 39, 47], 'bonus': 11, 'bonus_tied': [11, 15, 2], 'name': 'Lucky for Life', 'strategy': 'PERMANENT HOLD', 'score': 394},
-    'la':  {'main': [1, 15, 23, 42, 51], 'bonus': 4, 'bonus_tied': [4, 3, 1], 'name': 'Lotto America', 'strategy': 'PERMANENT HOLD', 'score': 168},
-    'pb':  {'main': [1, 11, 33, 52, 69], 'bonus': 20, 'bonus_tied': [20, 21, 14], 'name': 'Powerball', 'strategy': 'HOLD + REVIEW (every ~2 years)', 'score': 129},
-    'mm':  {'main': [6, 10, 27, 42, 68], 'bonus': 24, 'bonus_tied': [24], 'name': 'Mega Millions', 'strategy': 'NEXT-DRAW ONLY (insufficient data)', 'score': 32}
+    'l4l': {
+        'main': [1, 12, 30, 39, 47], 'bonus': 11, 'bonus_tied': [11, 15, 2],
+        'name': 'Lucky for Life', 'strategy': 'PERMANENT HOLD', 'score': 394,
+        'tied_tickets': [],  # No ties - only 1 top ticket
+        'best_match': '3/5',  # Never hit 5/5
+    },
+    'la': {
+        'main': [1, 15, 23, 42, 51], 'bonus': 4, 'bonus_tied': [4, 3, 1],
+        'name': 'Lotto America', 'strategy': 'PERMANENT HOLD', 'score': 168,
+        'tied_tickets': [[1, 15, 27, 42, 51]],  # 2nd equally good ticket!
+        'best_match': '3/5',  # Never hit 5/5
+    },
+    'pb': {
+        'main': [1, 11, 33, 52, 69], 'bonus': 20, 'bonus_tied': [20, 21, 14],
+        'name': 'Powerball', 'strategy': 'HOLD + REVIEW (every ~2 years)', 'score': 129,
+        'tied_tickets': [],  # No ties - only 1 top ticket
+        'best_match': '2/5',  # Never hit 5/5
+    },
+    'mm': {
+        'main': [6, 10, 27, 42, 68], 'bonus': 24, 'bonus_tied': [24, 16, 7],
+        'name': 'Mega Millions', 'strategy': 'NEXT-DRAW ONLY (insufficient data)', 'score': 32,
+        'tied_tickets': [[6, 21, 27, 42, 68], [6, 18, 27, 42, 68]],  # 3 equally good tickets!
+        'best_match': '2/5',  # Never hit 5/5
+    }
 }
 
 # Lottery schedule info (cutoff times are typically 1 hour before draw)
@@ -67,7 +87,7 @@ TOTAL_TAX_RATE = FEDERAL_TAX_RATE + OK_STATE_TAX_RATE  # 28.75% total
 LOTTERY_STRATEGIES = {
     'l4l': {'strategy': 'PERMANENT HOLD', 'stability': 68.9, 'draws': 1052, 'use_hold': True, 'optimal_window': 200, 'next_play_improvement': '2.56x'},
     'la':  {'strategy': 'PERMANENT HOLD', 'stability': 60.0, 'draws': 431, 'use_hold': True, 'optimal_window': 200, 'next_play_improvement': '2.53x'},
-    'pb':  {'strategy': 'HOLD + REVIEW', 'stability': 46.7, 'draws': 431, 'use_hold': True, 'review_every': 200, 'optimal_window': 200, 'next_play_improvement': '2.80x'},
+    'pb':  {'strategy': 'HOLD + REVIEW', 'stability': 46.7, 'draws': 431, 'use_hold': True, 'review_every': 200, 'optimal_window': 300, 'next_play_improvement': '2.06x'},  # Window 300 is best for PB
     'mm':  {'strategy': 'NEXT-DRAW ONLY', 'stability': None, 'draws': 81, 'use_hold': False, 'optimal_window': 30, 'next_play_improvement': '~2.0x'}
 }
 
@@ -853,15 +873,43 @@ body {{ font-family: Georgia, serif; background: #ffe4ec; margin: 0; padding: 20
         main_nums = ticket.get('main', [])
         bonus = ticket.get('bonus', '')
         bonus_tied = ticket.get('bonus_tied', [bonus])
+        tied_tickets = ticket.get('tied_tickets', [])
+        best_match = ticket.get('best_match', 'N/A')
         
         # Create ball display
         balls_html = ''.join([f'<span style="display:inline-block;width:36px;height:36px;border-radius:50%;font-weight:bold;font-size:15px;background:#ffffff;border:3px solid #c2185b;color:#880e4f;text-align:center;line-height:30px;margin:0 3px;vertical-align:middle;">{n}</span>' for n in main_nums])
         
         # Tied bonus display
         if len(bonus_tied) > 1:
-            tied_html = f'<div class="tied-info">⚠️ <strong>{bonus_name_str} Options (tied):</strong> {", ".join(map(str, bonus_tied))} - pick any!</div>'
+            tied_bonus_html = f'<div style="font-size: 11px; color: #5d4037; margin-top: 4px;">🎱 <strong>{bonus_name_str} options (tied):</strong> {", ".join(map(str, bonus_tied))}</div>'
+        else:
+            tied_bonus_html = ''
+        
+        # Tied main ticket display - show ALL equally good tickets
+        if tied_tickets:
+            tied_count = len(tied_tickets) + 1  # +1 for main ticket
+            tied_html = f'''
+            <div style="background: #fff8e1; border: 2px solid #ffb300; border-radius: 8px; padding: 10px; margin-top: 10px;">
+                <div style="font-weight: bold; color: #f57c00; margin-bottom: 8px;">🎯 {tied_count} EQUALLY GOOD TICKETS (Same Score: {ticket.get("score", "N/A")}):</div>
+                <div style="font-size: 12px; color: #5d4037; margin-bottom: 5px;"><strong>Ticket 1:</strong> {main_nums} + {bonus_name_str}: {bonus}</div>'''
+            for i, tied in enumerate(tied_tickets, 2):
+                tied_html += f'''
+                <div style="font-size: 12px; color: #5d4037; margin-bottom: 5px;"><strong>Ticket {i}:</strong> {tied} + {bonus_name_str}: {bonus}</div>'''
+            
+            # Add combined odds info
+            if lottery == 'la':
+                tied_html += '''
+                <div style="font-size: 11px; color: #2e7d32; margin-top: 8px; font-weight: bold;">💰 Play BOTH = 1 in 5.6M odds (2x better!) for only $2/draw</div>'''
+            elif lottery == 'mm':
+                tied_html += '''
+                <div style="font-size: 11px; color: #2e7d32; margin-top: 8px; font-weight: bold;">💰 Play ALL 3 = 1 in 40M odds (3x better!) for $15/draw</div>'''
+            tied_html += '''
+            </div>'''
         else:
             tied_html = ''
+        
+        # Never hit 5/5 confirmation
+        never_hit_html = f'<div style="font-size: 10px; color: #666; margin-top: 4px;">✅ Never hit 5/5 before (best: {best_match}) - fresh ticket!</div>'
         
         # Skip MM for HOLD (use NEXT DRAW instead)
         if lottery == 'mm':
@@ -881,6 +929,8 @@ body {{ font-family: Georgia, serif; background: #ffe4ec; margin: 0; padding: 20
                 <span style="display:inline-block;width:36px;height:36px;border-radius:50%;font-weight:bold;font-size:15px;background:#ffeb3b;border:3px solid #f9a825;color:#5d4037;text-align:center;line-height:30px;margin:0 3px;vertical-align:middle;">{bonus}</span>
                 <span style="font-size: 11px; color: #880e4f; margin-left: 5px; font-weight: bold;">← {bonus_name_str}</span>
             </div>
+            {tied_bonus_html}
+            {never_hit_html}
             {tied_html}
             {skip_note}
             <div class="schedule">
