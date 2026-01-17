@@ -2,7 +2,7 @@
   "l4l": {
     "lottery": "l4l",
     "name": "Lucky for Life",
-    "updated": "2026-01-16T23:09:28.987869",
+    "updated": "2026-01-16T23:39:29.618916",
     "total_draws": 1053,
     "last_draw": {
       "main": [
@@ -380,7 +380,7 @@
   "la": {
     "lottery": "la",
     "name": "Lotto America",
-    "updated": "2026-01-16T23:09:29.026541",
+    "updated": "2026-01-16T23:39:29.659277",
     "total_draws": 431,
     "last_draw": {
       "main": [
@@ -732,7 +732,7 @@
   "pb": {
     "lottery": "pb",
     "name": "Powerball",
-    "updated": "2026-01-16T23:09:29.041660",
+    "updated": "2026-01-16T23:39:29.673358",
     "total_draws": 431,
     "last_draw": {
       "main": [
@@ -1116,7 +1116,7 @@
   "mm": {
     "lottery": "mm",
     "name": "Mega Millions",
-    "updated": "2026-01-16T23:09:29.057941",
+    "updated": "2026-01-16T23:39:29.690568",
     "total_draws": 81,
     "last_draw": {
       "main": [

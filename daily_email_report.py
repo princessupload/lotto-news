@@ -441,6 +441,32 @@ def generate_report():
         if draws:
             accuracy_results[lottery] = check_pool_accuracy(lottery, draws)
     
+    # Track predictions and learn from results
+    try:
+        from prediction_tracker import (
+            load_tracker, save_tracker, record_result, 
+            generate_email_section, get_audience_pools
+        )
+        tracker = load_tracker()
+        
+        # Record latest results for each lottery
+        for lottery in ['l4l', 'la', 'pb', 'mm']:
+            draws = draws_by_lottery.get(lottery, [])
+            if draws:
+                latest = draws[0]
+                pools = get_audience_pools(lottery, draws)
+                if pools:
+                    pool_data = {
+                        'position_pools': [pools.get(f'position_{i+1}', []) for i in range(5)],
+                        'bonus_pool': pools.get('bonus', [])
+                    }
+                    record_result(lottery, latest.get('date'), latest, pool_data, tracker)
+        
+        save_tracker(tracker)
+        tracking_section = generate_email_section(tracker)
+    except Exception as e:
+        tracking_section = f"\n[Prediction tracking not available: {e}]"
+    
     # Check for wins
     user_wins = check_user_tickets_for_wins(draws_by_lottery)
     tied_wins = check_tied_tickets_for_wins(tied_tickets, draws_by_lottery)
@@ -642,6 +668,9 @@ def generate_report():
             report.append(f"   2. Ensure ticket passes constraint filters (3+ decades, max 1 consecutive)")
             report.append(f"   3. Pick a bonus ball from the bonus pool")
             report.append(f"   4. Avoid picking the exact same ticket as others!")
+    
+    # Add prediction tracking section
+    report.append(tracking_section)
     
     report.append("\n" + "=" * 60)
     report.append("Report generated automatically by Lottery Analyzer")
