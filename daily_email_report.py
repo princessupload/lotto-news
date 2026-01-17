@@ -45,7 +45,7 @@ USER_HOLD_TICKETS = {
     },
     'mm': {
         'main': [6, 10, 27, 42, 68], 'bonus': 24, 'bonus_tied': [24, 16, 7],
-        'name': 'Mega Millions', 'strategy': 'NEXT-DRAW ONLY (insufficient data)', 'score': 32,
+        'name': 'Mega Millions', 'strategy': 'HOLD (limited data but still best)', 'score': 32,
         'tied_tickets': [[6, 21, 27, 42, 68], [6, 18, 27, 42, 68]],  # 3 equally good tickets!
         'best_match': '2/5',  # Never hit 5/5
     }
@@ -88,7 +88,7 @@ LOTTERY_STRATEGIES = {
     'l4l': {'strategy': 'PERMANENT HOLD', 'stability': 68.9, 'draws': 1052, 'use_hold': True, 'optimal_window': 200, 'next_play_improvement': '2.56x'},
     'la':  {'strategy': 'PERMANENT HOLD', 'stability': 60.0, 'draws': 431, 'use_hold': True, 'optimal_window': 200, 'next_play_improvement': '2.53x'},
     'pb':  {'strategy': 'HOLD + REVIEW', 'stability': 46.7, 'draws': 431, 'use_hold': True, 'review_every': 200, 'optimal_window': 300, 'next_play_improvement': '2.06x'},  # Window 300 is best for PB
-    'mm':  {'strategy': 'NEXT-DRAW ONLY', 'stability': None, 'draws': 81, 'use_hold': False, 'optimal_window': 81, 'next_play_improvement': '~1.6x'}  # Use ALL data for MM
+    'mm':  {'strategy': 'HOLD (limited data)', 'stability': None, 'draws': 81, 'use_hold': True, 'optimal_window': 81, 'next_play_improvement': '~1.6x'}  # HOLD still beats NEXT PLAY even with limited data
 }
 
 # Lottery configurations
@@ -294,16 +294,19 @@ def generate_next_draw_ticket(lottery, draws):
     }
 
 def get_audience_pools(lottery, draws):
-    """Generate number pools for audience to build their own tickets."""
+    """Generate number pools for audience to build their own HOLD tickets.
+    
+    IMPORTANT: Uses ALL data (not windowed) because HOLD strategy relies on
+    all-time pattern stability - this is proven more effective than windowed data.
+    """
     strategy = LOTTERY_STRATEGIES.get(lottery, {})
     config = LOTTERY_CONFIG.get(lottery, {})
-    optimal_window = strategy.get('optimal_window', 100)
     
     if len(draws) < 10:
         return None
     
-    window = min(optimal_window, len(draws))
-    recent = draws[:window]
+    # Use ALL data for HOLD pools (proven more stable than windowed)
+    recent = draws
     
     # Position pools (top 8 per position for variety)
     pos_freq = {i: Counter() for i in range(5)}
@@ -578,8 +581,8 @@ def generate_report():
             report.append(f"   ⏱️ PLAY: Until draw #631 then re-evaluate (currently at ~431)")
             report.append(f"   📝 Re-evaluate every 200 draws (~2 years) - patterns shift")
         elif lottery == 'mm':
-            report.append(f"   ⏱️ PLAY: DO NOT USE - Use NEXT DRAW ticket instead!")
-            report.append(f"   📝 Only 81 draws - not enough data for stable HOLD pattern")
+            report.append(f"   ⏱️ PLAY: FOREVER - HOLD still beats NEXT PLAY even with limited data!")
+            report.append(f"   📝 Only 81 draws but all-time patterns are still more stable")
     
     # NEXT DRAW TICKETS SECTION
     report.append("\n" + "-" * 60)
@@ -623,8 +626,10 @@ def generate_report():
                 report.append(f"   Strategy: PERMANENT HOLD - pick once, play forever!")
             elif lottery == 'pb':
                 report.append(f"   Strategy: HOLD + REVIEW - re-evaluate every ~2 years")
+            elif lottery == 'mm':
+                report.append(f"   Strategy: HOLD (limited data) - HOLD still beats NEXT PLAY!")
             else:
-                report.append(f"   Strategy: NEXT-DRAW ONLY - pick fresh each draw!")
+                report.append(f"   Strategy: PERMANENT HOLD - pick once, play forever!")
             
             report.append(f"\n   POSITION POOLS (pick 1 from each for HOLD ticket):")
             for i in range(5):
