@@ -252,28 +252,28 @@
       ]
     },
     "mm": {
-      "total_draws_tracked": 2,
+      "total_draws_tracked": 3,
       "position_hits": [
-        1,
+        2,
         0,
-        0,
         1,
+        2,
         0
       ],
       "position_attempts": [
-        2,
-        2,
-        2,
-        2,
-        2
+        3,
+        3,
+        3,
+        3,
+        3
       ],
       "bonus_hits": 0,
-      "bonus_attempts": 2,
+      "bonus_attempts": 3,
       "potential_jackpots": 0,
       "partial_matches": {
         "5": 0,
         "4": 0,
-        "3": 0,
+        "3": 1,
         "2": 0,
         "1": 2,
         "0": 0
@@ -316,6 +316,26 @@
             false,
             false,
             false,
+            false
+          ]
+        },
+        {
+          "date": "2026-01-16",
+          "actual": [
+            2,
+            22,
+            33,
+            42,
+            67
+          ],
+          "bonus": 1,
+          "hits": 3,
+          "bonus_hit": false,
+          "position_hits": [
+            true,
+            false,
+            true,
+            true,
             false
           ]
         }

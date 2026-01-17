@@ -1,0 +1,263 @@
+{
+  "hold_tickets": {
+    "l4l": {
+      "main": [
+        1,
+        12,
+        30,
+        39,
+        47
+      ],
+      "bonus": 11
+    },
+    "la": {
+      "main": [
+        1,
+        15,
+        23,
+        42,
+        51
+      ],
+      "bonus": 4
+    },
+    "pb": {
+      "main": [
+        1,
+        11,
+        33,
+        52,
+        69
+      ],
+      "bonus": 20
+    },
+    "mm": {
+      "main": [
+        6,
+        10,
+        27,
+        42,
+        68
+      ],
+      "bonus": 24
+    }
+  },
+  "results": {
+    "2026-01-16": {
+      "l4l": {
+        "date": "2026-01-16",
+        "main": [
+          4,
+          6,
+          9,
+          14,
+          17
+        ],
+        "bonus": 17
+      },
+      "mm": {
+        "date": "2026-01-16",
+        "main": [
+          2,
+          22,
+          33,
+          42,
+          67
+        ],
+        "bonus": 1
+      }
+    },
+    "2026-01-14": {
+      "la": {
+        "date": "2026-01-14",
+        "main": [
+          1,
+          10,
+          23,
+          33,
+          35
+        ],
+        "bonus": 6
+      },
+      "pb": {
+        "date": "2026-01-14",
+        "main": [
+          6,
+          24,
+          39,
+          43,
+          51
+        ],
+        "bonus": 2
+      }
+    }
+  },
+  "hold_hits": {
+    "l4l": [
+      {
+        "date": "2026-01-16",
+        "matched": 0,
+        "matched_numbers": [],
+        "bonus_hit": false
+      }
+    ],
+    "la": [
+      {
+        "date": "2026-01-14",
+        "matched": 2,
+        "matched_numbers": [
+          1,
+          23
+        ],
+        "bonus_hit": false
+      }
+    ],
+    "pb": [
+      {
+        "date": "2026-01-14",
+        "matched": 0,
+        "matched_numbers": [],
+        "bonus_hit": false
+      }
+    ],
+    "mm": [
+      {
+        "date": "2026-01-16",
+        "matched": 1,
+        "matched_numbers": [
+          42
+        ],
+        "bonus_hit": false
+      }
+    ]
+  },
+  "pool_hits": {
+    "l4l": [
+      {
+        "date": "2026-01-16",
+        "covered": 1,
+        "could_have_won": false
+      }
+    ],
+    "la": [
+      {
+        "date": "2026-01-14",
+        "covered": 4,
+        "could_have_won": false
+      }
+    ],
+    "pb": [
+      {
+        "date": "2026-01-14",
+        "covered": 2,
+        "could_have_won": false
+      }
+    ],
+    "mm": [
+      {
+        "date": "2026-01-16",
+        "covered": 4,
+        "could_have_won": false
+      }
+    ]
+  },
+  "column_accuracy": {
+    "l4l": {
+      "position_1": {
+        "correct": 1,
+        "total": 1
+      },
+      "position_2": {
+        "correct": 0,
+        "total": 1
+      },
+      "position_3": {
+        "correct": 0,
+        "total": 1
+      },
+      "position_4": {
+        "correct": 0,
+        "total": 1
+      },
+      "position_5": {
+        "correct": 0,
+        "total": 1
+      }
+    },
+    "la": {
+      "position_1": {
+        "correct": 1,
+        "total": 1
+      },
+      "position_2": {
+        "correct": 1,
+        "total": 1
+      },
+      "position_3": {
+        "correct": 1,
+        "total": 1
+      },
+      "position_4": {
+        "correct": 1,
+        "total": 1
+      },
+      "position_5": {
+        "correct": 0,
+        "total": 1
+      }
+    },
+    "pb": {
+      "position_1": {
+        "correct": 1,
+        "total": 1
+      },
+      "position_2": {
+        "correct": 1,
+        "total": 1
+      },
+      "position_3": {
+        "correct": 0,
+        "total": 1
+      },
+      "position_4": {
+        "correct": 0,
+        "total": 1
+      },
+      "position_5": {
+        "correct": 0,
+        "total": 1
+      }
+    },
+    "mm": {
+      "position_1": {
+        "correct": 1,
+        "total": 1
+      },
+      "position_2": {
+        "correct": 1,
+        "total": 1
+      },
+      "position_3": {
+        "correct": 1,
+        "total": 1
+      },
+      "position_4": {
+        "correct": 1,
+        "total": 1
+      },
+      "position_5": {
+        "correct": 0,
+        "total": 1
+      }
+    }
+  },
+  "wins": [],
+  "patterns": {},
+  "total_plays": {
+    "l4l": 1,
+    "la": 1,
+    "pb": 1,
+    "mm": 1
+  },
+  "created": "2026-01-17T14:08:31.117030",
+  "last_updated": "2026-01-17T14:08:31.124067"
+}

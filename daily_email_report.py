@@ -445,7 +445,7 @@ def generate_report():
     try:
         from prediction_tracker import (
             load_tracker, save_tracker, record_result, 
-            generate_email_section, get_audience_pools
+            generate_email_section
         )
         tracker = load_tracker()
         
