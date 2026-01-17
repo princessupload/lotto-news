@@ -18,10 +18,10 @@
     "schedule": "Mon/Wed/Sat at 9:59 PM CT"
   },
   "MM": {
-    "amount": "$230M",
-    "cashValue": 105000000,
+    "amount": "$250M",
+    "cashValue": 113000000,
     "nextDraw": "2026-01-20T22:00:00",
     "schedule": "Tue/Fri at 10:00 PM CT"
   },
-  "lastUpdated": "2026-01-17T00:10:55.379896"
+  "lastUpdated": "2026-01-17T02:11:18.193513"
 }

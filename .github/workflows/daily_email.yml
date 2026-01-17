@@ -2,8 +2,8 @@ name: Daily Lottery Email
 
 on:
   schedule:
-    # Run daily at 8:00 AM Central Time (14:00 UTC)
-    - cron: '0 14 * * *'
+    # Run daily at 12:00 PM (Noon) Central Time (18:00 UTC)
+    - cron: '0 18 * * *'
   workflow_dispatch:  # Allow manual trigger
 
 jobs:
