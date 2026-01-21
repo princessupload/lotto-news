@@ -89,12 +89,77 @@
         ],
         "bonus": 2
       }
+    },
+    "2026-01-17": {
+      "l4l": {
+        "date": "2026-01-17",
+        "main": [
+          10,
+          17,
+          24,
+          32,
+          34
+        ],
+        "bonus": 17
+      },
+      "la": {
+        "date": "2026-01-17",
+        "main": [
+          7,
+          28,
+          29,
+          35,
+          39
+        ],
+        "bonus": 8
+      },
+      "pb": {
+        "date": "2026-01-17",
+        "main": [
+          5,
+          8,
+          27,
+          49,
+          57
+        ],
+        "bonus": 14
+      }
     }
   },
   "hold_hits": {
     "l4l": [
       {
         "date": "2026-01-16",
+        "matched": 0,
+        "matched_numbers": [],
+        "bonus_hit": false
+      },
+      {
+        "date": "2026-01-16",
+        "matched": 0,
+        "matched_numbers": [],
+        "bonus_hit": false
+      },
+      {
+        "date": "2026-01-16",
+        "matched": 0,
+        "matched_numbers": [],
+        "bonus_hit": false
+      },
+      {
+        "date": "2026-01-17",
+        "matched": 0,
+        "matched_numbers": [],
+        "bonus_hit": false
+      },
+      {
+        "date": "2026-01-17",
+        "matched": 0,
+        "matched_numbers": [],
+        "bonus_hit": false
+      },
+      {
+        "date": "2026-01-17",
         "matched": 0,
         "matched_numbers": [],
         "bonus_hit": false
@@ -109,6 +174,42 @@
           23
         ],
         "bonus_hit": false
+      },
+      {
+        "date": "2026-01-14",
+        "matched": 2,
+        "matched_numbers": [
+          1,
+          23
+        ],
+        "bonus_hit": false
+      },
+      {
+        "date": "2026-01-14",
+        "matched": 2,
+        "matched_numbers": [
+          1,
+          23
+        ],
+        "bonus_hit": false
+      },
+      {
+        "date": "2026-01-17",
+        "matched": 0,
+        "matched_numbers": [],
+        "bonus_hit": false
+      },
+      {
+        "date": "2026-01-17",
+        "matched": 0,
+        "matched_numbers": [],
+        "bonus_hit": false
+      },
+      {
+        "date": "2026-01-17",
+        "matched": 0,
+        "matched_numbers": [],
+        "bonus_hit": false
       }
     ],
     "pb": [
@@ -117,9 +218,79 @@
         "matched": 0,
         "matched_numbers": [],
         "bonus_hit": false
+      },
+      {
+        "date": "2026-01-14",
+        "matched": 0,
+        "matched_numbers": [],
+        "bonus_hit": false
+      },
+      {
+        "date": "2026-01-14",
+        "matched": 0,
+        "matched_numbers": [],
+        "bonus_hit": false
+      },
+      {
+        "date": "2026-01-17",
+        "matched": 0,
+        "matched_numbers": [],
+        "bonus_hit": false
+      },
+      {
+        "date": "2026-01-17",
+        "matched": 0,
+        "matched_numbers": [],
+        "bonus_hit": false
+      },
+      {
+        "date": "2026-01-17",
+        "matched": 0,
+        "matched_numbers": [],
+        "bonus_hit": false
       }
     ],
     "mm": [
+      {
+        "date": "2026-01-16",
+        "matched": 1,
+        "matched_numbers": [
+          42
+        ],
+        "bonus_hit": false
+      },
+      {
+        "date": "2026-01-16",
+        "matched": 1,
+        "matched_numbers": [
+          42
+        ],
+        "bonus_hit": false
+      },
+      {
+        "date": "2026-01-16",
+        "matched": 1,
+        "matched_numbers": [
+          42
+        ],
+        "bonus_hit": false
+      },
+      {
+        "date": "2026-01-16",
+        "matched": 1,
+        "matched_numbers": [
+          42
+        ],
+        "bonus_hit": false
+      },
+      {
+        "date": "2026-01-16",
+        "matched": 1,
+        "matched_numbers": [
+          42
+        ],
+        "bonus_hit": false
+      },
       {
         "date": "2026-01-16",
         "matched": 1,
@@ -136,12 +307,62 @@
         "date": "2026-01-16",
         "covered": 1,
         "could_have_won": false
+      },
+      {
+        "date": "2026-01-16",
+        "covered": 1,
+        "could_have_won": false
+      },
+      {
+        "date": "2026-01-16",
+        "covered": 1,
+        "could_have_won": false
+      },
+      {
+        "date": "2026-01-17",
+        "covered": 0,
+        "could_have_won": false
+      },
+      {
+        "date": "2026-01-17",
+        "covered": 0,
+        "could_have_won": false
+      },
+      {
+        "date": "2026-01-17",
+        "covered": 0,
+        "could_have_won": false
       }
     ],
     "la": [
       {
         "date": "2026-01-14",
         "covered": 4,
+        "could_have_won": false
+      },
+      {
+        "date": "2026-01-14",
+        "covered": 4,
+        "could_have_won": false
+      },
+      {
+        "date": "2026-01-14",
+        "covered": 4,
+        "could_have_won": false
+      },
+      {
+        "date": "2026-01-17",
+        "covered": 2,
+        "could_have_won": false
+      },
+      {
+        "date": "2026-01-17",
+        "covered": 2,
+        "could_have_won": false
+      },
+      {
+        "date": "2026-01-17",
+        "covered": 2,
         "could_have_won": false
       }
     ],
@@ -150,9 +371,59 @@
         "date": "2026-01-14",
         "covered": 2,
         "could_have_won": false
+      },
+      {
+        "date": "2026-01-14",
+        "covered": 2,
+        "could_have_won": false
+      },
+      {
+        "date": "2026-01-14",
+        "covered": 2,
+        "could_have_won": false
+      },
+      {
+        "date": "2026-01-17",
+        "covered": 2,
+        "could_have_won": false
+      },
+      {
+        "date": "2026-01-17",
+        "covered": 2,
+        "could_have_won": false
+      },
+      {
+        "date": "2026-01-17",
+        "covered": 2,
+        "could_have_won": false
       }
     ],
     "mm": [
+      {
+        "date": "2026-01-16",
+        "covered": 4,
+        "could_have_won": false
+      },
+      {
+        "date": "2026-01-16",
+        "covered": 4,
+        "could_have_won": false
+      },
+      {
+        "date": "2026-01-16",
+        "covered": 4,
+        "could_have_won": false
+      },
+      {
+        "date": "2026-01-16",
+        "covered": 4,
+        "could_have_won": false
+      },
+      {
+        "date": "2026-01-16",
+        "covered": 4,
+        "could_have_won": false
+      },
       {
         "date": "2026-01-16",
         "covered": 4,
@@ -163,101 +434,101 @@
   "column_accuracy": {
     "l4l": {
       "position_1": {
-        "correct": 1,
-        "total": 1
+        "correct": 3,
+        "total": 6
       },
       "position_2": {
         "correct": 0,
-        "total": 1
+        "total": 6
       },
       "position_3": {
         "correct": 0,
-        "total": 1
+        "total": 6
       },
       "position_4": {
         "correct": 0,
-        "total": 1
+        "total": 6
       },
       "position_5": {
         "correct": 0,
-        "total": 1
+        "total": 6
       }
     },
     "la": {
       "position_1": {
-        "correct": 1,
-        "total": 1
+        "correct": 6,
+        "total": 6
       },
       "position_2": {
-        "correct": 1,
-        "total": 1
+        "correct": 3,
+        "total": 6
       },
       "position_3": {
-        "correct": 1,
-        "total": 1
+        "correct": 6,
+        "total": 6
       },
       "position_4": {
-        "correct": 1,
-        "total": 1
+        "correct": 3,
+        "total": 6
       },
       "position_5": {
         "correct": 0,
-        "total": 1
+        "total": 6
       }
     },
     "pb": {
       "position_1": {
-        "correct": 1,
-        "total": 1
+        "correct": 6,
+        "total": 6
       },
       "position_2": {
-        "correct": 1,
-        "total": 1
+        "correct": 3,
+        "total": 6
       },
       "position_3": {
-        "correct": 0,
-        "total": 1
+        "correct": 3,
+        "total": 6
       },
       "position_4": {
         "correct": 0,
-        "total": 1
+        "total": 6
       },
       "position_5": {
         "correct": 0,
-        "total": 1
+        "total": 6
       }
     },
     "mm": {
       "position_1": {
-        "correct": 1,
-        "total": 1
+        "correct": 6,
+        "total": 6
       },
       "position_2": {
-        "correct": 1,
-        "total": 1
+        "correct": 6,
+        "total": 6
       },
       "position_3": {
-        "correct": 1,
-        "total": 1
+        "correct": 6,
+        "total": 6
       },
       "position_4": {
-        "correct": 1,
-        "total": 1
+        "correct": 6,
+        "total": 6
       },
       "position_5": {
         "correct": 0,
-        "total": 1
+        "total": 6
       }
     }
   },
   "wins": [],
   "patterns": {},
   "total_plays": {
-    "l4l": 1,
-    "la": 1,
-    "pb": 1,
-    "mm": 1
+    "l4l": 6,
+    "la": 6,
+    "pb": 6,
+    "mm": 6
   },
   "created": "2026-01-17T14:08:31.117030",
-  "last_updated": "2026-01-17T14:08:31.124067"
+  "last_updated": "2026-01-21T12:00:01.971058"
 }

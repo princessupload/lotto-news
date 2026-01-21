@@ -271,6 +271,34 @@ def fetch_la_lotto_net():
         print(f"      LA lotto.net error: {e}")
         return None
 
+def fetch_la_lotteryusa():
+    """Source 4: LotteryUSA - WORKING! Uses c-ball class."""
+    try:
+        html = fetch_url("https://www.lotteryusa.com/lotto-america/")
+        if not html:
+            return None
+        
+        # LotteryUSA uses c-ball class for numbers
+        balls = re.findall(r'c-ball[^>]*>(\d+)<', html)
+        
+        if len(balls) >= 6:
+            main = sorted([int(balls[i]) for i in range(5)])
+            bonus = int(balls[5])
+            
+            # Calculate most recent LA draw day
+            now = datetime.now()
+            for offset in range(7):
+                check = now - timedelta(days=offset)
+                if check.weekday() in [0, 2, 5]:  # Mon, Wed, Sat
+                    date_str = check.strftime("%Y-%m-%d")
+                    break
+            
+            return {'date': date_str, 'main': main, 'bonus': bonus, 'source': 'lotteryusa.com'}
+        return None
+    except Exception as e:
+        print(f"      LA LotteryUSA error: {e}")
+        return None
+
 # ============================================================
 # POWERBALL - Sources: NY Open Data, CT Lottery RSS, Iowa Lottery
 # ============================================================
@@ -683,6 +711,9 @@ def update_all():
     
     # LA
     print("🔵 Lotto America:")
+    print("   Fetching LotteryUSA...", end=" ")
+    la_lotteryusa = fetch_la_lotteryusa()
+    print("✓" if la_lotteryusa else "✗")
     print("   Fetching Oklahoma Lottery...", end=" ")
     la_ok = fetch_la_oklahoma()
     print("✓" if la_ok else "✗")
@@ -696,7 +727,7 @@ def update_all():
     la_lottonet = fetch_la_lotto_net()
     print("✓" if la_lottonet else "✗")
     
-    la_draw, la_msg = verify_and_get_best([la_ok, la_iowa, la_official, la_lottonet])
+    la_draw, la_msg = verify_and_get_best([la_lotteryusa, la_ok, la_iowa, la_official, la_lottonet])
     print(f"   {la_msg}")
     saved, save_msg = save_draw('la', la_draw, la_msg)
     print(f"   {'✅' if saved else '⏭️'} {save_msg}\n")
