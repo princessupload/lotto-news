@@ -87,7 +87,7 @@ TOTAL_TAX_RATE = FEDERAL_TAX_RATE + OK_STATE_TAX_RATE  # 28.75% total
 LOTTERY_STRATEGIES = {
     'l4l': {'strategy': 'PERMANENT HOLD', 'stability': 68.9, 'draws': 1052, 'use_hold': True, 'optimal_window': 200, 'next_play_improvement': '2.56x'},
     'la':  {'strategy': 'PERMANENT HOLD', 'stability': 60.0, 'draws': 431, 'use_hold': True, 'optimal_window': 200, 'next_play_improvement': '2.53x'},
-    'pb':  {'strategy': 'HOLD + REVIEW', 'stability': 46.7, 'draws': 431, 'use_hold': True, 'review_every': 200, 'optimal_window': 300, 'next_play_improvement': '2.06x'},  # Window 300 is best for PB
+    'pb':  {'strategy': 'HOLD + REVIEW', 'stability': 46.7, 'draws': 431, 'use_hold': True, 'review_every': 200, 'optimal_window': 100, 'next_play_improvement': '2.06x'},  # Window 100 is best for PB (patterns shift fast)
     'mm':  {'strategy': 'HOLD (limited data)', 'stability': None, 'draws': 81, 'use_hold': True, 'optimal_window': 81, 'next_play_improvement': '~1.6x'}  # HOLD still beats NEXT PLAY even with limited data
 }
 
