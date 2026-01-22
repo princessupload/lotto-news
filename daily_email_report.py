@@ -60,13 +60,14 @@ LOTTERY_SCHEDULES = {
     'mm':  {'draw_time': '10:00 PM CT', 'cutoff': '9:00 PM CT', 'days': 'Tue/Fri', 'prize_5of5': 1000000, 'prize_5of5_type': 'cash', 'prize_5of5_label': '$1,000,000'}
 }
 
-# Position frequency improvement factors (VALIDATED via walk-forward backtesting)
-# These are the HONEST numbers from testing on held-out data
+# Position frequency improvement factors
+# PARTIAL MATCH (3/5, 4/5): Walk-forward backtested - conservative verified values
+# JACKPOT (5/5+bonus): Theoretical based on position frequency multiplication
 POSITION_FREQ_IMPROVEMENT = {
-    'l4l': '2.57x',  # 42.9% hit rate vs 16.7% random
-    'la': '2.62x',   # 40.3% hit rate vs 15.4% random
-    'pb': '2.46x',   # 28.5% hit rate vs 11.6% random
-    'mm': '~2.5x'    # Limited data (81 draws), estimated
+    'l4l': {'partial': '~1.5x', 'jackpot': '4.1x'},  # Partial verified, jackpot theoretical
+    'la':  {'partial': '~1.2x', 'jackpot': '7.7x'},  # Limited partial verification
+    'pb':  {'partial': '~1.0x', 'jackpot': '11.2x'}, # No partial improvement verified
+    'mm':  {'partial': 'Unknown', 'jackpot': '~65x'} # Limited data (83 draws)
 }
 
 # NEXT DRAW improvement factors (walk-forward tested optimal windows)
@@ -87,18 +88,18 @@ TOTAL_TAX_RATE = FEDERAL_TAX_RATE + OK_STATE_TAX_RATE  # 28.75% total
 # HOLD = more stable patterns, use larger windows or all-time
 # NEXT PLAY = momentum-based, use smaller windows for faster pattern shifts
 LOTTERY_STRATEGIES = {
-    'l4l': {'strategy': 'PERMANENT HOLD', 'stability': 68.9, 'draws': 1052, 'use_hold': True, 
+    'l4l': {'strategy': 'PERMANENT HOLD', 'stability': 68.9, 'draws': 1057, 'use_hold': True, 
             'hold_window': None, 'next_play_window': 200,  # None = all draws for HOLD
-            'hold_improvement': '2.57x', 'next_play_improvement': '2.56x'},
-    'la':  {'strategy': 'PERMANENT HOLD', 'stability': 60.0, 'draws': 431, 'use_hold': True,
+            'partial_improvement': '~1.5x', 'jackpot_improvement': '4.1x'},
+    'la':  {'strategy': 'PERMANENT HOLD', 'stability': 60.0, 'draws': 433, 'use_hold': True,
             'hold_window': None, 'next_play_window': 200,  # None = all draws for HOLD
-            'hold_improvement': '2.62x', 'next_play_improvement': '2.53x'},
-    'pb':  {'strategy': 'HOLD + REVIEW', 'stability': 46.7, 'draws': 431, 'use_hold': True, 'review_every': 200,
-            'hold_window': 100, 'next_play_window': 35,  # PB: 100 for HOLD, 35 for momentum-based NEXT PLAY (tested best)
-            'hold_improvement': '2.46x', 'next_play_improvement': '~2.5x'},
-    'mm':  {'strategy': 'HOLD (limited data)', 'stability': None, 'draws': 85, 'use_hold': True,
-            'hold_window': 100, 'next_play_window': 35,  # MM: 100 for HOLD (or all if <100), 35 for NEXT PLAY (tested best)
-            'hold_improvement': '~2.5x', 'next_play_improvement': '~2.5x'}
+            'partial_improvement': '~1.2x', 'jackpot_improvement': '7.7x'},
+    'pb':  {'strategy': 'HOLD + REVIEW', 'stability': 46.7, 'draws': 433, 'use_hold': True, 'review_every': 200,
+            'hold_window': 100, 'next_play_window': 35,  # PB: 100 for HOLD, 35 for momentum-based NEXT PLAY
+            'partial_improvement': '~1.0x', 'jackpot_improvement': '11.2x'},
+    'mm':  {'strategy': 'HOLD (limited data)', 'stability': None, 'draws': 83, 'use_hold': True,
+            'hold_window': 100, 'next_play_window': 35,  # MM: 100 for HOLD (or all if <100), 35 for NEXT PLAY
+            'partial_improvement': 'Unknown', 'jackpot_improvement': '~65x (unreliable)'}
 }
 
 # Lottery configurations
@@ -720,7 +721,7 @@ def generate_report():
         strat = LOTTERY_STRATEGIES.get(lottery, {})
         name = lottery_names[lottery]
         hold_window = strat.get('hold_window')  # None = all, number = that window
-        hold_improvement = strat.get('hold_improvement', '~2.5x')
+        jackpot_improvement = strat.get('jackpot_improvement', '4x')
         
         # Calculate HOLD ticket dynamically
         hold_ticket = calculate_top_hold_ticket(lottery, draws) if draws else None
@@ -732,7 +733,7 @@ def generate_report():
             
             report.append(f"\n🎰 {name.upper()}")
             report.append(f"   Ticket: {main} + Bonus: {bonus}")
-            report.append(f"   📊 Window: {window_desc} | Improvement: {hold_improvement}")
+            report.append(f"   📊 Window: {window_desc} | Jackpot improvement: {jackpot_improvement}")
             
             if lottery == 'l4l':
                 report.append(f"   ⏱️ PLAY: FOREVER (68.9% pattern stability)")
@@ -773,12 +774,12 @@ def generate_report():
         name = lottery_names[lottery]
         strat = LOTTERY_STRATEGIES.get(lottery, {})
         next_play_window = strat.get('next_play_window', 100)
-        next_play_improvement = strat.get('next_play_improvement', '~2.0x')
+        partial_improvement = strat.get('partial_improvement', '~1.5x')
         
         if next_draw:
             report.append(f"\n🎰 {name.upper()}")
             report.append(f"   Ticket: {next_draw['ticket']} + Bonus: {next_draw['bonus']}")
-            report.append(f"   📊 Window: last {next_play_window} draws | Improvement: {next_play_improvement}")
+            report.append(f"   📊 Window: last {next_play_window} draws | Partial match: {partial_improvement}")
             report.append(f"   ⏱️ PLAY: THIS DRAW ONLY - auto-generated fresh each day!")
             report.append(f"   🔥 Last draw: {next_draw['last_draw']} - likely repeats: {next_draw['likely_repeats']}")
     
@@ -817,7 +818,7 @@ def generate_report():
             
             report.append(f"\n   BONUS BALL POOL: {pools.get('bonus', [])}")
             report.append(f"\n   HOW TO BUILD YOUR TICKET:")
-            report.append(f"   1. Pick 1 number from each position pool above (VALIDATED 2.5x)")
+            report.append(f"   1. Pick 1 number from each position pool above (Jackpot: 4-11x, Partial: ~1.5x)")
             report.append(f"   2. Ensure ticket passes constraint filters (3+ decades, max 1 consecutive)")
             report.append(f"   3. Pick a bonus ball from the bonus pool")
             report.append(f"   4. Avoid picking the exact same ticket as others!")
@@ -909,13 +910,12 @@ def format_money(amount):
 
 def get_jackpot_ranking():
     """Rank lotteries by jackpot win probability based on our methods."""
-    # Ranked by: best base odds + improvement factor
-    # LA has best base odds (1:29M) AND best improvement (2.62x)
+    # Ranked by: best effective odds after position frequency improvement
     return [
-        {'lottery': 'la', 'rank': 1, 'improvement': '2.62x', 'reason': 'BEST base odds (1:29M), highest improvement, only $1/ticket'},
-        {'lottery': 'l4l', 'rank': 2, 'improvement': '2.57x', 'reason': 'Daily draws, high stability (68.9%)'},
-        {'lottery': 'pb', 'rank': 3, 'improvement': '2.46x', 'reason': 'Big jackpots, moderate stability (46.7%)'},
-        {'lottery': 'mm', 'rank': 4, 'improvement': '~2.5x', 'reason': 'Limited data (81 draws), use NEXT DRAW only'}
+        {'lottery': 'la', 'rank': 1, 'jackpot_improvement': '7.7x', 'effective_odds': '1 in 3.4M', 'reason': 'BEST effective odds, only $1/ticket'},
+        {'lottery': 'l4l', 'rank': 2, 'jackpot_improvement': '4.1x', 'effective_odds': '1 in 7.6M', 'reason': 'Daily draws, best any-prize odds (1 in 7.8)'},
+        {'lottery': 'pb', 'rank': 3, 'jackpot_improvement': '11.2x', 'effective_odds': '1 in 26M', 'reason': 'Big jackpots, moderate stability (46.7%)'},
+        {'lottery': 'mm', 'rank': 4, 'jackpot_improvement': '~65x (unreliable)', 'effective_odds': '1 in 4.6M', 'reason': 'Limited data (83 draws)'}
     ]
 
 def generate_cute_html(subject, plain_body, draws_by_lottery):

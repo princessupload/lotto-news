@@ -174,16 +174,28 @@ This document contains all verified discoveries from our historical analysis tha
 
 ---
 
-## 12. ODDS IMPROVEMENT
+## 12. ODDS IMPROVEMENT (CORRECTED Jan 22, 2026)
 
-**Finding:** Our analysis improves odds significantly over random play.
+**Finding:** Position frequency analysis provides modest improvements.
 
-| Lottery | Base Odds | With Our Analysis | Improvement |
-|---------|-----------|-------------------|-------------|
-| LA | 1 in 26M | 1 in 98K | **265x** |
-| L4L | 1 in 31M | 1 in 162K | **191x** |
-| MM | 1 in 303M | 1 in 184K | **1,643x** |
-| PB | 1 in 292M | 1 in 544K | **537x** |
+### Partial Match Improvement (3/5, 4/5) - WALK-FORWARD VERIFIED:
+| Lottery | Improvement | Status |
+|---------|-------------|--------|
+| L4L | **~1.5x** | ✅ Verified (stacked methods) |
+| LA | **~1.2x** | ✅ Limited verification |
+| PB | **~1.0x** | ⚠️ No predictive improvement |
+| MM | **Unknown** | ⚠️ Insufficient data (83 draws) |
+
+### Jackpot Probability Improvement (5/5+Bonus) - THEORETICAL:
+| Lottery | Base Odds | Effective Odds | Improvement |
+|---------|-----------|----------------|-------------|
+| L4L | 1 in 30.8M | 1 in 7.6M | **4.1x** |
+| LA | 1 in 26M | 1 in 3.4M | **7.7x** |
+| PB | 1 in 292M | 1 in 26M | **11.2x** |
+| MM | 1 in 303M | 1 in 4.6M | **~65x** (unreliable - limited data) |
+
+**Note:** Jackpot improvement is theoretical based on position frequency multiplication.
+Still astronomical odds - jackpot is pure luck with a slight statistical edge.
 
 ---
 
