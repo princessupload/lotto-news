@@ -94,10 +94,10 @@ LOTTERY_STRATEGIES = {
             'hold_window': None, 'next_play_window': 200,  # None = all draws for HOLD
             'hold_improvement': '2.62x', 'next_play_improvement': '2.53x'},
     'pb':  {'strategy': 'HOLD + REVIEW', 'stability': 46.7, 'draws': 431, 'use_hold': True, 'review_every': 200,
-            'hold_window': 100, 'next_play_window': 22,  # PB: 100 for HOLD, 22 for momentum-based NEXT PLAY
+            'hold_window': 100, 'next_play_window': 35,  # PB: 100 for HOLD, 35 for momentum-based NEXT PLAY (tested best)
             'hold_improvement': '2.46x', 'next_play_improvement': '~2.5x'},
     'mm':  {'strategy': 'HOLD (limited data)', 'stability': None, 'draws': 85, 'use_hold': True,
-            'hold_window': 100, 'next_play_window': 22,  # MM: 100 for HOLD (or all if <100), 22 for NEXT PLAY
+            'hold_window': 100, 'next_play_window': 35,  # MM: 100 for HOLD (or all if <100), 35 for NEXT PLAY (tested best)
             'hold_improvement': '~2.5x', 'next_play_improvement': '~2.5x'}
 }
 
