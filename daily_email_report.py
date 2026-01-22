@@ -73,7 +73,7 @@ POSITION_FREQ_IMPROVEMENT = {
 NEXT_DRAW_ODDS = {
     'l4l': '2.56x',  # Window 200
     'la': '2.53x',   # Window 200
-    'pb': '2.06x',   # Window 300 (was 2.80x - WRONG!)
+    'pb': '2.06x',   # Window 100 (patterns shift fast)
     'mm': '~2.0x'
 }
 
@@ -83,12 +83,22 @@ OK_STATE_TAX_RATE = 0.0475  # 4.75% Oklahoma
 TOTAL_TAX_RATE = FEDERAL_TAX_RATE + OK_STATE_TAX_RATE  # 28.75% total
 
 # Lottery-specific strategy based on pattern stability analysis
-# NEXT PLAY windows optimized via walk-forward testing (Jan 16, 2026)
+# HOLD and NEXT PLAY windows optimized separately via walk-forward testing (Jan 21, 2026)
+# HOLD = more stable patterns, use larger windows or all-time
+# NEXT PLAY = momentum-based, use smaller windows for faster pattern shifts
 LOTTERY_STRATEGIES = {
-    'l4l': {'strategy': 'PERMANENT HOLD', 'stability': 68.9, 'draws': 1052, 'use_hold': True, 'optimal_window': 200, 'next_play_improvement': '2.56x'},
-    'la':  {'strategy': 'PERMANENT HOLD', 'stability': 60.0, 'draws': 431, 'use_hold': True, 'optimal_window': 200, 'next_play_improvement': '2.53x'},
-    'pb':  {'strategy': 'HOLD + REVIEW', 'stability': 46.7, 'draws': 431, 'use_hold': True, 'review_every': 200, 'optimal_window': 100, 'next_play_improvement': '2.06x'},  # Window 100 is best for PB (patterns shift fast)
-    'mm':  {'strategy': 'HOLD (limited data)', 'stability': None, 'draws': 81, 'use_hold': True, 'optimal_window': 81, 'next_play_improvement': '~1.6x'}  # HOLD still beats NEXT PLAY even with limited data
+    'l4l': {'strategy': 'PERMANENT HOLD', 'stability': 68.9, 'draws': 1052, 'use_hold': True, 
+            'hold_window': None, 'next_play_window': 200,  # None = all draws for HOLD
+            'hold_improvement': '2.57x', 'next_play_improvement': '2.56x'},
+    'la':  {'strategy': 'PERMANENT HOLD', 'stability': 60.0, 'draws': 431, 'use_hold': True,
+            'hold_window': None, 'next_play_window': 200,  # None = all draws for HOLD
+            'hold_improvement': '2.62x', 'next_play_improvement': '2.53x'},
+    'pb':  {'strategy': 'HOLD + REVIEW', 'stability': 46.7, 'draws': 431, 'use_hold': True, 'review_every': 200,
+            'hold_window': 100, 'next_play_window': 22,  # PB: 100 for HOLD, 22 for momentum-based NEXT PLAY
+            'hold_improvement': '2.46x', 'next_play_improvement': '~2.5x'},
+    'mm':  {'strategy': 'HOLD (limited data)', 'stability': None, 'draws': 85, 'use_hold': True,
+            'hold_window': 100, 'next_play_window': 22,  # MM: 100 for HOLD (or all if <100), 22 for NEXT PLAY
+            'hold_improvement': '~2.5x', 'next_play_improvement': '~2.5x'}
 }
 
 # Lottery configurations
@@ -142,18 +152,27 @@ def calculate_top_hold_ticket(lottery, draws):
     NOTE: Proven 3-combos were tested and showed NO improvement (0-1.28x vs 2.5x for position freq).
     Selection now uses ONLY position frequency score, which is the validated method.
     
+    Uses hold_window from LOTTERY_STRATEGIES - None means all draws, number means that many recent draws.
+    This allows HOLD tickets to auto-update daily based on new data and optimal window.
+    
     Returns the single highest-scoring ticket for this lottery.
     """
     if len(draws) < 50:
         return None
     
     config = LOTTERY_CONFIG.get(lottery, {})
-    max_main = config.get('max_main', 48)
-    max_bonus = config.get('max_bonus', 18)
+    strategy = LOTTERY_STRATEGIES.get(lottery, {})
+    hold_window = strategy.get('hold_window')  # None = all draws, number = that many recent
     
-    # Step 1: Calculate position frequencies (ALL draws for HOLD tickets)
+    # Apply hold_window - use all draws if None, otherwise use window
+    if hold_window is not None:
+        working_draws = draws[:hold_window]
+    else:
+        working_draws = draws
+    
+    # Step 1: Calculate position frequencies from window
     pos_freq = {i: Counter() for i in range(5)}
-    for draw in draws:
+    for draw in working_draws:
         main = sorted(draw.get('main', []))
         for i, num in enumerate(main):
             pos_freq[i][num] += 1
@@ -240,15 +259,19 @@ def get_position_pools(draws, window=100):
     return pools
 
 def generate_next_draw_ticket(lottery, draws):
-    """Generate a NEXT DRAW ticket based on optimal window and momentum."""
+    """Generate a NEXT DRAW ticket based on optimal next_play_window and momentum.
+    
+    Uses next_play_window from LOTTERY_STRATEGIES - smaller windows for faster pattern shifts.
+    This auto-updates daily based on new data.
+    """
     config = LOTTERY_CONFIG.get(lottery, {})
     strategy = LOTTERY_STRATEGIES.get(lottery, {})
-    optimal_window = strategy.get('optimal_window', 100)
+    next_play_window = strategy.get('next_play_window', 100)  # Use next_play_window, not optimal_window
     
     if len(draws) < 10:
         return None
     
-    window = min(optimal_window, len(draws))
+    window = min(next_play_window, len(draws))
     recent = draws[:window]
     
     # Position frequency from optimal window
@@ -678,33 +701,38 @@ def generate_report():
     report.append("🎯 YOUR TICKETS TO PLAY TODAY")
     report.append("=" * 60)
     
-    # HOLD TICKETS SECTION
+    # HOLD TICKETS SECTION - Auto-calculated daily from optimal windows
     report.append("\n" + "-" * 60)
-    report.append("📌 HOLD TICKETS (Play according to duration below)")
+    report.append("📌 HOLD TICKETS (Auto-updated daily based on optimal windows)")
     report.append("-" * 60)
     
     for lottery in ['l4l', 'la', 'pb', 'mm']:
-        ticket = USER_HOLD_TICKETS.get(lottery, {})
+        draws = draws_by_lottery.get(lottery, [])
         strat = LOTTERY_STRATEGIES.get(lottery, {})
-        name = ticket.get('name', lottery.upper())
-        main = ticket.get('main', [])
-        bonus = ticket.get('bonus')
+        name = lottery_names[lottery]
+        hold_window = strat.get('hold_window')  # None = all, number = that window
+        hold_improvement = strat.get('hold_improvement', '~2.5x')
         
-        report.append(f"\n🎰 {name.upper()}")
-        report.append(f"   Ticket: {main} + Bonus: {bonus}")
+        # Calculate HOLD ticket dynamically
+        hold_ticket = calculate_top_hold_ticket(lottery, draws) if draws else None
         
-        if lottery == 'l4l':
-            report.append(f"   ⏱️ PLAY: FOREVER (68.9% pattern stability)")
-            report.append(f"   📝 This is your permanent L4L ticket - never change it!")
-        elif lottery == 'la':
-            report.append(f"   ⏱️ PLAY: FOREVER (60% pattern stability)")
-            report.append(f"   📝 This is your permanent LA ticket - never change it!")
-        elif lottery == 'pb':
-            report.append(f"   ⏱️ PLAY: Until draw #631 then re-evaluate (currently at ~431)")
-            report.append(f"   📝 Re-evaluate every 200 draws (~2 years) - patterns shift")
-        elif lottery == 'mm':
-            report.append(f"   ⏱️ PLAY: FOREVER - HOLD still beats NEXT PLAY even with limited data!")
-            report.append(f"   📝 Only 81 draws but all-time patterns are still more stable")
+        if hold_ticket:
+            main = hold_ticket['main']
+            bonus = hold_ticket['bonus']
+            window_desc = f"last {hold_window} draws" if hold_window else "all draws"
+            
+            report.append(f"\n🎰 {name.upper()}")
+            report.append(f"   Ticket: {main} + Bonus: {bonus}")
+            report.append(f"   📊 Window: {window_desc} | Improvement: {hold_improvement}")
+            
+            if lottery == 'l4l':
+                report.append(f"   ⏱️ PLAY: FOREVER (68.9% pattern stability)")
+            elif lottery == 'la':
+                report.append(f"   ⏱️ PLAY: FOREVER (60% pattern stability)")
+            elif lottery == 'pb':
+                report.append(f"   ⏱️ PLAY: Re-evaluate when patterns shift (100-draw window)")
+            elif lottery == 'mm':
+                report.append(f"   ⏱️ PLAY: FOREVER (all {len(draws)} draws used)")
     
     # NEXT DRAW TICKETS SECTION
     report.append("\n" + "-" * 60)
@@ -716,13 +744,14 @@ def generate_report():
         next_draw = generate_next_draw_ticket(lottery, draws) if draws else None
         name = lottery_names[lottery]
         strat = LOTTERY_STRATEGIES.get(lottery, {})
-        window = strat.get('optimal_window', 100)
+        next_play_window = strat.get('next_play_window', 100)
+        next_play_improvement = strat.get('next_play_improvement', '~2.0x')
         
         if next_draw:
             report.append(f"\n🎰 {name.upper()}")
             report.append(f"   Ticket: {next_draw['ticket']} + Bonus: {next_draw['bonus']}")
-            report.append(f"   ⏱️ PLAY: THIS DRAW ONLY - generate fresh next time!")
-            report.append(f"   📝 Based on last {window} draws optimal window")
+            report.append(f"   📊 Window: last {next_play_window} draws | Improvement: {next_play_improvement}")
+            report.append(f"   ⏱️ PLAY: THIS DRAW ONLY - auto-generated fresh each day!")
             report.append(f"   🔥 Last draw: {next_draw['last_draw']} - likely repeats: {next_draw['likely_repeats']}")
     
     # ========== AUDIENCE EDUCATION SECTION ==========
