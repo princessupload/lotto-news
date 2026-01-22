@@ -223,9 +223,9 @@ def calculate_top_hold_ticket(lottery, draws):
     if not best_ticket:
         return None
     
-    # Calculate top bonus balls
+    # Calculate top bonus balls from the SAME window as main numbers
     bonus_freq = Counter()
-    for draw in draws:
+    for draw in working_draws:  # Use working_draws, not all draws!
         bonus = draw.get('bonus')
         if bonus:
             bonus_freq[bonus] += 1
