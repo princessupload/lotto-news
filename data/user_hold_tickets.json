@@ -1,50 +1,54 @@
 {
-  "created": "2026-01-15",
-  "description": "User's personal HOLD FOREVER tickets",
+  "created": "2026-01-23",
+  "description": "User's personal HOLD FOREVER tickets - PURE POSITION FREQUENCY (Validated Method)",
   "tickets": {
     "pb": {
       "main": [
-        4,
-        21,
-        35,
-        61,
+        1,
+        11,
+        33,
+        52,
         69
       ],
-      "bonus": 21,
-      "name": "Powerball"
+      "bonus": 1,
+      "name": "Powerball",
+      "notes": "Pure position frequency - all 5 numbers in top 8 pools"
     },
     "la": {
       "main": [
-        2,
+        1,
         15,
-        21,
-        33,
-        52
+        23,
+        42,
+        51
       ],
-      "bonus": 4,
-      "name": "Lotto America"
+      "bonus": 1,
+      "name": "Lotto America",
+      "notes": "Pure position frequency - all 5 numbers in top 8 pools"
     },
     "l4l": {
       "main": [
-        5,
+        1,
         12,
         30,
         39,
-        40
+        47
       ],
       "bonus": 2,
-      "name": "Lucky for Life"
+      "name": "Lucky for Life",
+      "notes": "Pure position frequency - all 5 numbers in top 8 pools"
     },
     "mm": {
       "main": [
-        18,
-        21,
+        2,
+        10,
         27,
         42,
         68
       ],
-      "bonus": 24,
-      "name": "Mega Millions"
+      "bonus": 1,
+      "name": "Mega Millions",
+      "notes": "Pure position frequency - all 5 numbers in top 8 pools"
     }
   },
   "wins": {

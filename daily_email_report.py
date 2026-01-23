@@ -24,30 +24,23 @@ DATA_DIR = Path(__file__).parent / 'data'
 # Updated to PURE POSITION FREQUENCY scoring (Jan 16, 2026)
 # Proven combos removed from scoring - validation showed 0-1.28x (not predictive)
 # Position frequency is the ONLY validated method (2.5x improvement)
+# CORRECTED Jan 23, 2026 - Pure Position Frequency (all numbers in top 8 pools)
 USER_HOLD_TICKETS = {
     'l4l': {
-        'main': [1, 12, 30, 39, 47], 'bonus': 11, 'bonus_tied': [11, 15, 2],
-        'name': 'Lucky for Life', 'strategy': 'PERMANENT HOLD', 'score': 394,
-        'tied_tickets': [],  # No ties - only 1 top ticket
-        'best_match': '3/5',  # Never hit 5/5
+        'main': [1, 12, 30, 39, 47], 'bonus': 2,
+        'name': 'Lucky for Life', 'strategy': 'PERMANENT HOLD',
     },
     'la': {
-        'main': [1, 15, 23, 42, 51], 'bonus': 4, 'bonus_tied': [4, 3, 1],
-        'name': 'Lotto America', 'strategy': 'PERMANENT HOLD', 'score': 168,
-        'tied_tickets': [[1, 15, 27, 42, 51]],  # 2nd equally good ticket!
-        'best_match': '3/5',  # Never hit 5/5
+        'main': [1, 15, 23, 42, 51], 'bonus': 1,
+        'name': 'Lotto America', 'strategy': 'PERMANENT HOLD',
     },
     'pb': {
-        'main': [1, 11, 33, 52, 69], 'bonus': 20, 'bonus_tied': [20, 21, 14],
-        'name': 'Powerball', 'strategy': 'HOLD + REVIEW (every ~2 years)', 'score': 129,
-        'tied_tickets': [],  # No ties - only 1 top ticket
-        'best_match': '2/5',  # Never hit 5/5
+        'main': [1, 11, 33, 52, 69], 'bonus': 1,
+        'name': 'Powerball', 'strategy': 'PERMANENT HOLD',
     },
     'mm': {
-        'main': [6, 10, 27, 42, 68], 'bonus': 24, 'bonus_tied': [24, 16, 7],
-        'name': 'Mega Millions', 'strategy': 'HOLD (limited data but still best)', 'score': 32,
-        'tied_tickets': [[6, 21, 27, 42, 68], [6, 18, 27, 42, 68]],  # 3 equally good tickets!
-        'best_match': '2/5',  # Never hit 5/5
+        'main': [2, 10, 27, 42, 68], 'bonus': 1,
+        'name': 'Mega Millions', 'strategy': 'PERMANENT HOLD',
     }
 }
 
@@ -112,19 +105,18 @@ LOTTERY_CONFIG = {
 
 # Jackpot-optimized tickets based on position frequency analysis (Jan 22, 2026)
 # These have 4-65x better odds than random based on historical position frequencies
+# CORRECTED Jan 23, 2026 - Pure Position Frequency (all numbers in top 8 pools)
 JACKPOT_OPTIMIZED = {
-    'l4l': {'main': [1, 12, 30, 39, 47], 'bonus': 11, 'improvement': '4.1x', 'effective_odds': '1 in 7.6M'},
-    'la':  {'main': [1, 15, 23, 42, 51], 'bonus': 4,  'improvement': '7.7x', 'effective_odds': '1 in 3.4M'},
-    'pb':  {'main': [1, 11, 33, 52, 69], 'bonus': 20, 'improvement': '11.2x', 'effective_odds': '1 in 26M'},
-    'mm':  {'main': [2, 10, 27, 42, 68], 'bonus': 1,  'improvement': '65x', 'effective_odds': '1 in 4.6M'}
+    'l4l': {'main': [1, 12, 30, 39, 47], 'bonus': 2, 'improvement': '4.1x', 'effective_odds': '1 in 7.6M'},
+    'la':  {'main': [1, 15, 23, 42, 51], 'bonus': 1, 'improvement': '7.7x', 'effective_odds': '1 in 3.4M'},
+    'pb':  {'main': [1, 11, 33, 52, 69], 'bonus': 1, 'improvement': '11.2x', 'effective_odds': '1 in 26M'},
+    'mm':  {'main': [2, 10, 27, 42, 68], 'bonus': 1, 'improvement': '65x', 'effective_odds': '1 in 4.6M'}
 }
 
+# Personal email ONLY for ticket recommendations
 EMAIL_CONFIG = {
     'recipients': [
-        'sarasinead@aol.com',
-        'marysineadart@gmail.com',
-        'princessuploadie@gmail.com',
-        'rick@gamingdatasystems.com'
+        'sarasinead@aol.com'
     ],
     'smtp_server': 'smtp.gmail.com',
     'smtp_port': 587,

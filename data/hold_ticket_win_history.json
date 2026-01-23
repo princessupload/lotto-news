@@ -1,0 +1,277 @@
+{
+  "current_l4l": {
+    "3_of_5": [
+      {
+        "date": "2025-07-12",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2025-06-09",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2024-11-22",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2024-06-22",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2024-02-26",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2023-12-07",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2023-12-02",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2023-11-24",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2023-10-30",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2023-09-07",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2023-04-12",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2023-02-27",
+        "matches": 3,
+        "bonus_match": false
+      }
+    ],
+    "4_of_5": [
+      {
+        "date": "2023-04-17",
+        "matches": 4,
+        "bonus_match": false
+      }
+    ],
+    "5_of_5": [],
+    "jackpot": []
+  },
+  "current_la": {
+    "3_of_5": [
+      {
+        "date": "2026-01-03",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2024-08-07",
+        "matches": 3,
+        "bonus_match": true
+      },
+      {
+        "date": "2024-07-10",
+        "matches": 3,
+        "bonus_match": true
+      },
+      {
+        "date": "2024-07-06",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2023-09-18",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2023-07-26",
+        "matches": 3,
+        "bonus_match": false
+      }
+    ],
+    "4_of_5": [
+      {
+        "date": "2025-07-19",
+        "matches": 4,
+        "bonus_match": false
+      }
+    ],
+    "5_of_5": [],
+    "jackpot": []
+  },
+  "current_pb": {
+    "3_of_5": [
+      {
+        "date": "2025-09-08",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2024-08-10",
+        "matches": 3,
+        "bonus_match": false
+      }
+    ],
+    "4_of_5": [],
+    "5_of_5": [],
+    "jackpot": []
+  },
+  "current_mm": {
+    "3_of_5": [],
+    "4_of_5": [],
+    "5_of_5": [],
+    "jackpot": []
+  },
+  "prev_l4l_v1": {
+    "3_of_5": [
+      {
+        "date": "2025-10-22",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2025-05-25",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2025-03-15",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2024-12-26",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2024-12-10",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2024-06-05",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2024-03-25",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2024-02-02",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2023-10-19",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2023-08-31",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2023-04-01",
+        "matches": 3,
+        "bonus_match": false
+      }
+    ],
+    "4_of_5": [],
+    "5_of_5": [],
+    "jackpot": []
+  },
+  "prev_la_v1": {
+    "3_of_5": [
+      {
+        "date": "2025-08-11",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2024-08-07",
+        "matches": 3,
+        "bonus_match": true
+      }
+    ],
+    "4_of_5": [],
+    "5_of_5": [],
+    "jackpot": []
+  },
+  "prev_pb_v1": {
+    "3_of_5": [],
+    "4_of_5": [],
+    "5_of_5": [],
+    "jackpot": []
+  },
+  "prev_mm_v1": {
+    "3_of_5": [],
+    "4_of_5": [],
+    "5_of_5": [],
+    "jackpot": []
+  },
+  "prev_pb_v2": {
+    "3_of_5": [
+      {
+        "date": "2025-07-07",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2024-08-31",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2023-07-01",
+        "matches": 3,
+        "bonus_match": false
+      }
+    ],
+    "4_of_5": [
+      {
+        "date": "2023-08-30",
+        "matches": 4,
+        "bonus_match": false
+      }
+    ],
+    "5_of_5": [],
+    "jackpot": []
+  },
+  "prev_mm_v2": {
+    "3_of_5": [
+      {
+        "date": "2025-09-12",
+        "matches": 3,
+        "bonus_match": false
+      },
+      {
+        "date": "2025-06-27",
+        "matches": 3,
+        "bonus_match": false
+      }
+    ],
+    "4_of_5": [],
+    "5_of_5": [],
+    "jackpot": []
+  }
+}
