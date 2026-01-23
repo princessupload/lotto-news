@@ -3,13 +3,13 @@
     "lottery": "l4l",
     "draws": 1057,
     "hold_ticket": [
-      3,
+      1,
       12,
-      17,
-      38,
-      46
+      30,
+      39,
+      47
     ],
-    "hold_bonus": 11,
+    "hold_bonus": 2,
     "optimal_ticket": [
       1,
       12,
@@ -77,37 +77,20 @@
       15,
       18
     ],
-    "issues": [
-      {
-        "position": 4,
-        "hold_num": 38,
-        "pool": [
-          31,
-          33,
-          34,
-          35,
-          36,
-          37,
-          39,
-          40
-        ],
-        "rank": 8,
-        "freq_pct": 4.162724692526018
-      }
-    ],
-    "match_count": 1
+    "issues": [],
+    "match_count": 5
   },
   "la": {
     "lottery": "la",
     "draws": 433,
     "hold_ticket": [
-      4,
+      1,
       15,
-      25,
+      23,
       42,
       51
     ],
-    "hold_bonus": 4,
+    "hold_bonus": 1,
     "optimal_ticket": [
       1,
       15,
@@ -176,19 +159,19 @@
       8
     ],
     "issues": [],
-    "match_count": 3
+    "match_count": 5
   },
   "pb": {
     "lottery": "pb",
     "draws": 433,
     "hold_ticket": [
-      28,
+      1,
+      11,
       33,
-      53,
-      64,
+      52,
       69
     ],
-    "hold_bonus": 20,
+    "hold_bonus": 1,
     "optimal_ticket": [
       1,
       11,
@@ -256,80 +239,15 @@
       21,
       25
     ],
-    "issues": [
-      {
-        "position": 1,
-        "hold_num": 28,
-        "pool": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8
-        ],
-        "rank": 16,
-        "freq_pct": 1.6166281755196306
-      },
-      {
-        "position": 2,
-        "hold_num": 33,
-        "pool": [
-          11,
-          12,
-          16,
-          18,
-          21,
-          24,
-          27,
-          31
-        ],
-        "rank": 11,
-        "freq_pct": 2.5404157043879905
-      },
-      {
-        "position": 3,
-        "hold_num": 53,
-        "pool": [
-          27,
-          32,
-          33,
-          34,
-          37,
-          40,
-          43,
-          44
-        ],
-        "rank": 12,
-        "freq_pct": 0.6928406466512702
-      },
-      {
-        "position": 4,
-        "hold_num": 64,
-        "pool": [
-          39,
-          47,
-          48,
-          50,
-          51,
-          52,
-          53,
-          61
-        ],
-        "rank": 40,
-        "freq_pct": 1.6166281755196306
-      }
-    ],
-    "match_count": 2
+    "issues": [],
+    "match_count": 5
   },
   "mm": {
     "lottery": "mm",
     "draws": 83,
     "hold_ticket": [
+      2,
       10,
-      18,
       27,
       42,
       68
@@ -403,6 +321,6 @@
       24
     ],
     "issues": [],
-    "match_count": 4
+    "match_count": 5
   }
 }

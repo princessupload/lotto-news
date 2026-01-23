@@ -2410,13 +2410,22 @@
         ]
       },
       "created_at": "2026-01-15T23:08:38.455091",
-      "status": "pending",
-      "actual_main": null,
-      "actual_bonus": null,
-      "main_matches": null,
-      "bonus_match": null,
-      "checked_at": null,
-      "updated_at": "2026-01-16T16:39:23.437253"
+      "status": "checked",
+      "actual_main": [
+        8,
+        20,
+        30,
+        42,
+        46
+      ],
+      "actual_bonus": 15,
+      "main_matches": [
+        30
+      ],
+      "bonus_match": true,
+      "checked_at": "2026-01-23T14:41:45.853852",
+      "updated_at": "2026-01-16T16:39:23.437253",
+      "match_count": 1
     }
   ],
   "results": {
@@ -2425,10 +2434,10 @@
       "4_5": 0,
       "3_5": 0,
       "2_5": 2,
-      "1_5": 0,
+      "1_5": 1,
       "0_5": 0,
-      "bonus_hits": 0,
-      "total": 2
+      "bonus_hits": 1,
+      "total": 3
     },
     "la": {
       "5_5": 0,
@@ -2463,13 +2472,13 @@
   },
   "method_performance": {
     "l4l": {
-      "position_freq": 4,
-      "recency": 4,
-      "pairs": 3,
+      "position_freq": 5,
+      "recency": 5,
+      "pairs": 4,
       "near_hit": 0,
       "trend": 1,
-      "repeat": 1,
-      "timing": 1
+      "repeat": 2,
+      "timing": 2
     },
     "la": {
       "position_freq": 3,
@@ -2496,14 +2505,14 @@
       "timing": 1
     }
   },
-  "lastUpdated": "2026-01-18T15:25:53.287551",
+  "lastUpdated": "2026-01-23T14:41:45.854413",
   "learned_weights": {
     "l4l": {
       "near_hit": 1,
       "trend": 1,
       "repeat": 1,
-      "position_freq": 9,
-      "recency": 9,
+      "position_freq": 10,
+      "recency": 10,
       "timing": 1
     },
     "pb": {
@@ -2519,12 +2528,12 @@
       "pairs": 10,
       "near_hit": 1,
       "trend": 1,
-      "repeat": 4,
-      "timing": 4
+      "repeat": 3,
+      "timing": 3
     },
     "mm": {
-      "near_hit": 3,
-      "trend": 3
+      "near_hit": 2,
+      "trend": 2
     }
   }
 }
