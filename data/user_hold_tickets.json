@@ -8,7 +8,7 @@
         11,
         27,
         53,
-        68
+        69
       ],
       "bonus": 20,
       "name": "Powerball",
@@ -22,7 +22,7 @@
         42,
         51
       ],
-      "bonus": 1,
+      "bonus": 4,
       "name": "Lotto America",
       "notes": "Combined Method Optimal - better backtest results"
     },

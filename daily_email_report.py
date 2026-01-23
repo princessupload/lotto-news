@@ -30,11 +30,11 @@ USER_HOLD_TICKETS = {
         'name': 'Lucky for Life', 'strategy': 'PERMANENT HOLD',
     },
     'la': {
-        'main': [1, 15, 23, 42, 51], 'bonus': 1,
+        'main': [1, 15, 23, 42, 51], 'bonus': 4,
         'name': 'Lotto America', 'strategy': 'PERMANENT HOLD',
     },
     'pb': {
-        'main': [1, 11, 27, 53, 68], 'bonus': 20,
+        'main': [1, 11, 27, 53, 69], 'bonus': 20,
         'name': 'Powerball', 'strategy': 'PERMANENT HOLD',
     },
     'mm': {
