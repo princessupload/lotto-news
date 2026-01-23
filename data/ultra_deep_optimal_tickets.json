@@ -1,0 +1,161 @@
+{
+  "timestamp": "2026-01-23T01:48:11",
+  "method": "Ultra-Deep Analysis (12 novel methods)",
+  "optimal_tickets": {
+    "l4l": {
+      "main": [
+        17,
+        24,
+        32,
+        42,
+        48
+      ],
+      "bonus": 15,
+      "sum": 163,
+      "analyses": {
+        "sum_trajectory": {
+          "recent_sum_avg": 111.8,
+          "older_sum_avg": 115.9,
+          "trend_pct": -3.5375323554788682,
+          "direction": "DECREASING",
+          "optimal_sum_range": [
+            100,
+            122
+          ]
+        },
+        "prime_bias": "NO BIAS",
+        "fibonacci": "NO SIGNIFICANT BIAS",
+        "momentum_top": [
+          24,
+          17,
+          3,
+          32,
+          21
+        ],
+        "sticky_numbers": [
+          7,
+          8,
+          20,
+          17,
+          9
+        ]
+      }
+    },
+    "la": {
+      "main": [
+        1,
+        35,
+        39,
+        51
+      ],
+      "bonus": 4,
+      "sum": 126,
+      "analyses": {
+        "sum_trajectory": {
+          "recent_sum_avg": 128.05,
+          "older_sum_avg": 130.1,
+          "trend_pct": -1.5757109915449523,
+          "direction": "STABLE",
+          "optimal_sum_range": [
+            115,
+            140
+          ]
+        },
+        "prime_bias": "NO BIAS",
+        "fibonacci": "NO SIGNIFICANT BIAS",
+        "momentum_top": [
+          30,
+          51,
+          25,
+          35,
+          10
+        ],
+        "sticky_numbers": [
+          35,
+          8,
+          9,
+          1,
+          51
+        ]
+      }
+    },
+    "pb": {
+      "main": [
+        5,
+        28,
+        53,
+        55,
+        57
+      ],
+      "bonus": 20,
+      "sum": 198,
+      "analyses": {
+        "sum_trajectory": {
+          "recent_sum_avg": 174.2,
+          "older_sum_avg": 176.2,
+          "trend_pct": -1.135073779795687,
+          "direction": "STABLE",
+          "optimal_sum_range": [
+            156,
+            191
+          ]
+        },
+        "prime_bias": "NO BIAS",
+        "fibonacci": "NO SIGNIFICANT BIAS",
+        "momentum_top": [
+          5,
+          28,
+          27,
+          53,
+          55
+        ],
+        "sticky_numbers": [
+          11,
+          64,
+          14,
+          45,
+          13
+        ]
+      }
+    },
+    "mm": {
+      "main": [
+        8,
+        42,
+        47,
+        64,
+        66
+      ],
+      "bonus": 1,
+      "sum": 227,
+      "analyses": {
+        "sum_trajectory": {
+          "recent_sum_avg": 178.05,
+          "older_sum_avg": 167.1,
+          "trend_pct": 6.552962298025145,
+          "direction": "INCREASING",
+          "optimal_sum_range": [
+            160,
+            195
+          ]
+        },
+        "prime_bias": "NO BIAS",
+        "fibonacci": "NO SIGNIFICANT BIAS",
+        "momentum_top": [
+          47,
+          42,
+          56,
+          64,
+          50
+        ],
+        "sticky_numbers": [
+          27,
+          43,
+          59,
+          64,
+          18
+        ]
+      }
+    }
+  }
+}

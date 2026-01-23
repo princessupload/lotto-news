@@ -1,0 +1,442 @@
+{
+  "analysis_date": "2026-01-23T02:45:02",
+  "final_tickets": {
+    "l4l": {
+      "main": [
+        3,
+        12,
+        17,
+        38,
+        46
+      ],
+      "bonus": 11
+    },
+    "la": {
+      "main": [
+        4,
+        15,
+        25,
+        42,
+        51
+      ],
+      "bonus": 4
+    },
+    "pb": {
+      "main": [
+        5,
+        11,
+        27,
+        53,
+        69
+      ],
+      "bonus": 20
+    },
+    "mm": {
+      "main": [
+        2,
+        18,
+        27,
+        42,
+        56
+      ],
+      "bonus": 1
+    }
+  },
+  "justifications": {
+    "l4l": {
+      "numbers": {
+        "3": {
+          "position_freq": 0.10396975425330812,
+          "position_freq_pct": 10.396975425330812,
+          "overall_freq": 0.12570888468809074,
+          "overall_freq_pct": 12.570888468809075,
+          "expected_random": 0.10416666666666667,
+          "lift_vs_random": 0.9981096408317579,
+          "recent_momentum": 0.2,
+          "momentum_vs_overall": 1.5909774436090225,
+          "avg_gap": 8.007575757575758,
+          "current_gap": 1057,
+          "is_overdue": "True"
+        },
+        "12": {
+          "position_freq": 0.05671077504725898,
+          "position_freq_pct": 5.671077504725898,
+          "overall_freq": 0.11814744801512288,
+          "overall_freq_pct": 11.814744801512287,
+          "expected_random": 0.10416666666666667,
+          "lift_vs_random": 0.5444234404536862,
+          "recent_momentum": 0.16666666666666666,
+          "momentum_vs_overall": 1.4106666666666665,
+          "avg_gap": 8.419354838709678,
+          "current_gap": 1053,
+          "is_overdue": "True"
+        },
+        "17": {
+          "position_freq": 0.04253308128544423,
+          "position_freq_pct": 4.253308128544423,
+          "overall_freq": 0.12003780718336483,
+          "overall_freq_pct": 12.003780718336483,
+          "expected_random": 0.10416666666666667,
+          "lift_vs_random": 0.4083175803402646,
+          "recent_momentum": 0.3,
+          "momentum_vs_overall": 2.499212598425197,
+          "avg_gap": 8.373015873015873,
+          "current_gap": 1057,
+          "is_overdue": "True"
+        },
+        "38": {
+          "position_freq": 0.04158790170132325,
+          "position_freq_pct": 4.158790170132325,
+          "overall_freq": 0.10869565217391304,
+          "overall_freq_pct": 10.869565217391305,
+          "expected_random": 0.10416666666666667,
+          "lift_vs_random": 0.3992438563327032,
+          "recent_momentum": 0.1,
+          "momentum_vs_overall": 0.92,
+          "avg_gap": 9.271929824561404,
+          "current_gap": 1057,
+          "is_overdue": "True"
+        },
+        "46": {
+          "position_freq": 0.10207939508506617,
+          "position_freq_pct": 10.207939508506616,
+          "overall_freq": 0.11720226843100189,
+          "overall_freq_pct": 11.720226843100189,
+          "expected_random": 0.10416666666666667,
+          "lift_vs_random": 0.9799621928166351,
+          "recent_momentum": 0.03333333333333333,
+          "momentum_vs_overall": 0.28440860215053765,
+          "avg_gap": 8.341463414634147,
+          "current_gap": 1055,
+          "is_overdue": "True"
+        }
+      },
+      "bonus": {
+        "frequency": 0.07466918714555766,
+        "freq_pct": 7.466918714555766,
+        "expected_random": 0.05555555555555555,
+        "lift_vs_random": 1.344045368620038,
+        "recent_freq": 0.12,
+        "trend": "HOT"
+      },
+      "synergy": {
+        "total_pair_hits": 140,
+        "triple_hits": 16,
+        "sum": 116,
+        "sum_percentile": 41.87145557655955,
+        "decades_covered": 4,
+        "decades": [
+          0,
+          1,
+          3,
+          4
+        ],
+        "gaps": [
+          9,
+          5,
+          21,
+          8
+        ],
+        "avg_gap": 10.75,
+        "consecutive_pairs": 0
+      }
+    },
+    "la": {
+      "numbers": {
+        "4": {
+          "position_freq": 0.0944700460829493,
+          "position_freq_pct": 9.44700460829493,
+          "overall_freq": 0.11059907834101383,
+          "overall_freq_pct": 11.059907834101383,
+          "expected_random": 0.09615384615384616,
+          "lift_vs_random": 0.9824884792626727,
+          "recent_momentum": 0.06666666666666667,
+          "momentum_vs_overall": 0.6027777777777777,
+          "avg_gap": 8.74468085106383,
+          "current_gap": 419,
+          "is_overdue": "True"
+        },
+        "15": {
+          "position_freq": 0.06221198156682028,
+          "position_freq_pct": 6.221198156682028,
+          "overall_freq": 0.11981566820276497,
+          "overall_freq_pct": 11.981566820276496,
+          "expected_random": 0.09615384615384616,
+          "lift_vs_random": 0.6470046082949309,
+          "recent_momentum": 0.1,
+          "momentum_vs_overall": 0.8346153846153846,
+          "avg_gap": 8.411764705882353,
+          "current_gap": 430,
+          "is_overdue": "True"
+        },
+        "25": {
+          "position_freq": 0.04608294930875576,
+          "position_freq_pct": 4.6082949308755765,
+          "overall_freq": 0.10138248847926268,
+          "overall_freq_pct": 10.138248847926267,
+          "expected_random": 0.09615384615384616,
+          "lift_vs_random": 0.4792626728110599,
+          "recent_momentum": 0.16666666666666666,
+          "momentum_vs_overall": 1.6439393939393938,
+          "avg_gap": 9.069767441860465,
+          "current_gap": 394,
+          "is_overdue": "True"
+        },
+        "42": {
+          "position_freq": 0.05069124423963134,
+          "position_freq_pct": 5.0691244239631335,
+          "overall_freq": 0.12672811059907835,
+          "overall_freq_pct": 12.672811059907835,
+          "expected_random": 0.09615384615384616,
+          "lift_vs_random": 0.5271889400921659,
+          "recent_momentum": 0.06666666666666667,
+          "momentum_vs_overall": 0.526060606060606,
+          "avg_gap": 7.722222222222222,
+          "current_gap": 425,
+          "is_overdue": "True"
+        },
+        "51": {
+          "position_freq": 0.11981566820276497,
+          "position_freq_pct": 11.981566820276496,
+          "overall_freq": 0.1313364055299539,
+          "overall_freq_pct": 13.13364055299539,
+          "expected_random": 0.09615384615384616,
+          "lift_vs_random": 1.2460829493087557,
+          "recent_momentum": 0.13333333333333333,
+          "momentum_vs_overall": 1.0152046783625732,
+          "avg_gap": 7.642857142857143,
+          "current_gap": 428,
+          "is_overdue": "True"
+        }
+      },
+      "bonus": {
+        "frequency": 0.14285714285714285,
+        "freq_pct": 14.285714285714285,
+        "expected_random": 0.1,
+        "lift_vs_random": 1.4285714285714284,
+        "recent_freq": 0.14,
+        "trend": "STABLE"
+      },
+      "synergy": {
+        "total_pair_hits": 64,
+        "triple_hits": 10,
+        "sum": 137,
+        "sum_percentile": 55.52995391705069,
+        "decades_covered": 5,
+        "decades": [
+          0,
+          1,
+          2,
+          4,
+          5
+        ],
+        "gaps": [
+          11,
+          10,
+          17,
+          9
+        ],
+        "avg_gap": 11.75,
+        "consecutive_pairs": 0
+      }
+    },
+    "pb": {
+      "numbers": {
+        "5": {
+          "position_freq": 0.06221198156682028,
+          "position_freq_pct": 6.221198156682028,
+          "overall_freq": 0.06912442396313365,
+          "overall_freq_pct": 6.912442396313365,
+          "expected_random": 0.07246376811594203,
+          "lift_vs_random": 0.8585253456221198,
+          "recent_momentum": 0.23333333333333334,
+          "momentum_vs_overall": 3.375555555555555,
+          "avg_gap": 13.931034482758621,
+          "current_gap": 405,
+          "is_overdue": "True"
+        },
+        "11": {
+          "position_freq": 0.04608294930875576,
+          "position_freq_pct": 4.6082949308755765,
+          "overall_freq": 0.07834101382488479,
+          "overall_freq_pct": 7.834101382488479,
+          "expected_random": 0.07246376811594203,
+          "lift_vs_random": 0.6359447004608295,
+          "recent_momentum": 0.1,
+          "momentum_vs_overall": 1.2764705882352942,
+          "avg_gap": 13.090909090909092,
+          "current_gap": 432,
+          "is_overdue": "True"
+        },
+        "27": {
+          "position_freq": 0.03917050691244239,
+          "position_freq_pct": 3.9170506912442393,
+          "overall_freq": 0.0967741935483871,
+          "overall_freq_pct": 9.67741935483871,
+          "expected_random": 0.07246376811594203,
+          "lift_vs_random": 0.540552995391705,
+          "recent_momentum": 0.1,
+          "momentum_vs_overall": 1.0333333333333334,
+          "avg_gap": 9.560975609756097,
+          "current_gap": 392,
+          "is_overdue": "True"
+        },
+        "53": {
+          "position_freq": 0.04377880184331797,
+          "position_freq_pct": 4.377880184331797,
+          "overall_freq": 0.09216589861751152,
+          "overall_freq_pct": 9.216589861751153,
+          "expected_random": 0.07246376811594203,
+          "lift_vs_random": 0.604147465437788,
+          "recent_momentum": 0.16666666666666666,
+          "momentum_vs_overall": 1.8083333333333331,
+          "avg_gap": 10.974358974358974,
+          "current_gap": 428,
+          "is_overdue": "True"
+        },
+        "69": {
+          "position_freq": 0.08064516129032258,
+          "position_freq_pct": 8.064516129032258,
+          "overall_freq": 0.08064516129032258,
+          "overall_freq_pct": 8.064516129032258,
+          "expected_random": 0.07246376811594203,
+          "lift_vs_random": 1.1129032258064515,
+          "recent_momentum": 0.1,
+          "momentum_vs_overall": 1.2400000000000002,
+          "avg_gap": 12.029411764705882,
+          "current_gap": 423,
+          "is_overdue": "True"
+        }
+      },
+      "bonus": {
+        "frequency": 0.059907834101382486,
+        "freq_pct": 5.990783410138248,
+        "expected_random": 0.038461538461538464,
+        "lift_vs_random": 1.5576036866359446,
+        "recent_freq": 0.04,
+        "trend": "COLD"
+      },
+      "synergy": {
+        "total_pair_hits": 32,
+        "triple_hits": 2,
+        "sum": 165,
+        "sum_percentile": 40.78341013824885,
+        "decades_covered": 5,
+        "decades": [
+          0,
+          1,
+          2,
+          5,
+          6
+        ],
+        "gaps": [
+          6,
+          16,
+          26,
+          16
+        ],
+        "avg_gap": 16.0,
+        "consecutive_pairs": 0
+      }
+    },
+    "mm": {
+      "numbers": {
+        "2": {
+          "position_freq": 0.0963855421686747,
+          "position_freq_pct": 9.63855421686747,
+          "overall_freq": 0.0963855421686747,
+          "overall_freq_pct": 9.63855421686747,
+          "expected_random": 0.07142857142857142,
+          "lift_vs_random": 1.349397590361446,
+          "recent_momentum": 0.13333333333333333,
+          "momentum_vs_overall": 1.3833333333333333,
+          "avg_gap": 10.0,
+          "current_gap": 71,
+          "is_overdue": "True"
+        },
+        "18": {
+          "position_freq": 0.060240963855421686,
+          "position_freq_pct": 6.024096385542169,
+          "overall_freq": 0.14457831325301204,
+          "overall_freq_pct": 14.457831325301203,
+          "expected_random": 0.07142857142857142,
+          "lift_vs_random": 0.8433734939759037,
+          "recent_momentum": 0.13333333333333333,
+          "momentum_vs_overall": 0.9222222222222223,
+          "avg_gap": 5.818181818181818,
+          "current_gap": 70,
+          "is_overdue": "True"
+        },
+        "27": {
+          "position_freq": 0.08433734939759036,
+          "position_freq_pct": 8.433734939759036,
+          "overall_freq": 0.12048192771084337,
+          "overall_freq_pct": 12.048192771084338,
+          "expected_random": 0.07142857142857142,
+          "lift_vs_random": 1.180722891566265,
+          "recent_momentum": 0.13333333333333333,
+          "momentum_vs_overall": 1.1066666666666667,
+          "avg_gap": 4.444444444444445,
+          "current_gap": 49,
+          "is_overdue": "True"
+        },
+        "42": {
+          "position_freq": 0.08433734939759036,
+          "position_freq_pct": 8.433734939759036,
+          "overall_freq": 0.14457831325301204,
+          "overall_freq_pct": 14.457831325301203,
+          "expected_random": 0.07142857142857142,
+          "lift_vs_random": 1.180722891566265,
+          "recent_momentum": 0.13333333333333333,
+          "momentum_vs_overall": 0.9222222222222223,
+          "avg_gap": 6.363636363636363,
+          "current_gap": 71,
+          "is_overdue": "True"
+        },
+        "56": {
+          "position_freq": 0.060240963855421686,
+          "position_freq_pct": 6.024096385542169,
+          "overall_freq": 0.12048192771084337,
+          "overall_freq_pct": 12.048192771084338,
+          "expected_random": 0.07142857142857142,
+          "lift_vs_random": 0.8433734939759037,
+          "recent_momentum": 0.16666666666666666,
+          "momentum_vs_overall": 1.3833333333333333,
+          "avg_gap": 9.0,
+          "current_gap": 81,
+          "is_overdue": "True"
+        }
+      },
+      "bonus": {
+        "frequency": 0.07228915662650602,
+        "freq_pct": 7.228915662650602,
+        "expected_random": 0.04,
+        "lift_vs_random": 1.8072289156626504,
+        "recent_freq": 0.04,
+        "trend": "COLD"
+      },
+      "synergy": {
+        "total_pair_hits": 15,
+        "triple_hits": 2,
+        "sum": 145,
+        "sum_percentile": 22.89156626506024,
+        "decades_covered": 5,
+        "decades": [
+          0,
+          1,
+          2,
+          4,
+          5
+        ],
+        "gaps": [
+          16,
+          9,
+          15,
+          14
+        ],
+        "avg_gap": 13.5,
+        "consecutive_pairs": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "analysis_date": "2026-01-23T03:09:20",
+  "chronos_available": false,
+  "final_tickets": {
+    "l4l": {
+      "main": [
+        24,
+        30,
+        42,
+        45,
+        48
+      ],
+      "bonus": 11,
+      "chronos_used": false,
+      "anomalies_found": 21,
+      "ball_bias_found": 0
+    },
+    "la": {
+      "main": [
+        1,
+        30,
+        47,
+        50,
+        51
+      ],
+      "bonus": 4,
+      "chronos_used": false,
+      "anomalies_found": 20,
+      "ball_bias_found": 0
+    },
+    "pb": {
+      "main": [
+        28,
+        51,
+        53,
+        59,
+        69
+      ],
+      "bonus": 20,
+      "chronos_used": false,
+      "anomalies_found": 27,
+      "ball_bias_found": 15
+    },
+    "mm": {
+      "main": [
+        1,
+        27,
+        32,
+        56,
+        59
+      ],
+      "bonus": 1,
+      "chronos_used": false,
+      "anomalies_found": 28,
+      "ball_bias_found": 13
+    }
+  }
+}

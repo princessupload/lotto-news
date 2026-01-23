@@ -1,0 +1,50 @@
+{
+  "l4l": {
+    "draws": 1058,
+    "unique_5of5": 1058,
+    "repeats_5of5": 0,
+    "unique_jackpots": 1058,
+    "repeats_jackpots": 0,
+    "repeating_4of5": 79,
+    "max_4of5_repeats": 2,
+    "repeating_3of5": 2191,
+    "max_3of5_repeats": 7,
+    "exclusion_count": 1058
+  },
+  "la": {
+    "draws": 434,
+    "unique_5of5": 434,
+    "repeats_5of5": 0,
+    "unique_jackpots": 434,
+    "repeats_jackpots": 0,
+    "repeating_4of5": 9,
+    "max_4of5_repeats": 2,
+    "repeating_3of5": 399,
+    "max_3of5_repeats": 3,
+    "exclusion_count": 434
+  },
+  "pb": {
+    "draws": 434,
+    "unique_5of5": 434,
+    "repeats_5of5": 0,
+    "unique_jackpots": 434,
+    "repeats_jackpots": 0,
+    "repeating_4of5": 3,
+    "max_4of5_repeats": 2,
+    "repeating_3of5": 188,
+    "max_3of5_repeats": 3,
+    "exclusion_count": 434
+  },
+  "mm": {
+    "draws": 83,
+    "unique_5of5": 83,
+    "repeats_5of5": 0,
+    "unique_jackpots": 83,
+    "repeats_jackpots": 0,
+    "repeating_4of5": 0,
+    "max_4of5_repeats": 0,
+    "repeating_3of5": 11,
+    "max_3of5_repeats": 3,
+    "exclusion_count": 83
+  }
+}

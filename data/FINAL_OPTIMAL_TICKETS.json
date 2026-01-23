@@ -1,0 +1,58 @@
+{
+  "analysis_date": "2026-01-23T02:43:27",
+  "method": "Critical Comparison - Exhaustive Search",
+  "final_optimal_tickets": {
+    "l4l": {
+      "ticket": [
+        3,
+        12,
+        17,
+        38,
+        46
+      ],
+      "bonus": 11,
+      "score": 119.94804717592655,
+      "method": "Exhaustive Search (148,201 combos tested)",
+      "backtest_3plus": 12
+    },
+    "la": {
+      "ticket": [
+        4,
+        15,
+        25,
+        42,
+        51
+      ],
+      "bonus": 4,
+      "score": 83.19812606336912,
+      "method": "Exhaustive Search (174,054 combos tested)",
+      "backtest_3plus": 6
+    },
+    "pb": {
+      "ticket": [
+        5,
+        11,
+        27,
+        53,
+        69
+      ],
+      "bonus": 20,
+      "score": 62.01163110307132,
+      "method": "Exhaustive Search (183,252 combos tested)",
+      "backtest_3plus": 2
+    },
+    "mm": {
+      "ticket": [
+        2,
+        18,
+        27,
+        42,
+        56
+      ],
+      "bonus": 1,
+      "score": 56.972920854425105,
+      "method": "Exhaustive Search (133,633 combos tested)",
+      "backtest_3plus": 2
+    }
+  }
+}

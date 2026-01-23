@@ -1,0 +1,287 @@
+{
+  "l4l": {
+    "ticket": [
+      24,
+      30,
+      40,
+      42
+    ],
+    "bonus": 15,
+    "top_numbers": [
+      [
+        42,
+        2.4844720496894417
+      ],
+      [
+        24,
+        0.5
+      ],
+      [
+        17,
+        0.5
+      ],
+      [
+        6,
+        0.5
+      ],
+      [
+        8,
+        0.5
+      ],
+      [
+        12,
+        0.5
+      ],
+      [
+        14,
+        0.5
+      ],
+      [
+        40,
+        0.5
+      ],
+      [
+        11,
+        0.5
+      ],
+      [
+        39,
+        0.5
+      ]
+    ],
+    "overdue": [
+      {
+        "number": 42,
+        "current_gap": 40,
+        "avg_gap": 9.676190476190476,
+        "p95_gap": 32.19999999999999,
+        "max_gap": 56,
+        "overdue_ratio": 4.133858267716536,
+        "urgency": 1.2422360248447208
+      }
+    ],
+    "periodic": [
+      {
+        "number": 41,
+        "period": 14,
+        "correlation": 0.1138245839523549,
+        "last_appearance": 1051
+      },
+      {
+        "number": 39,
+        "period": 27,
+        "correlation": 0.10954555132360246,
+        "last_appearance": 1051
+      },
+      {
+        "number": 30,
+        "period": 42,
+        "correlation": 0.1091287117665417,
+        "last_appearance": 1050
+      },
+      {
+        "number": 29,
+        "period": 16,
+        "correlation": 0.10524864264045083,
+        "last_appearance": 1031
+      }
+    ],
+    "clusters": [
+      {
+        "numbers": [
+          28,
+          30,
+          33,
+          37,
+          41
+        ],
+        "internal_strength": 124,
+        "avg_strength": 12.4
+      },
+      {
+        "numbers": [
+          3,
+          6,
+          17,
+          24
+        ],
+        "internal_strength": 90,
+        "avg_strength": 15.0
+      },
+      {
+        "numbers": [
+          4,
+          9,
+          20,
+          27,
+          46
+        ],
+        "internal_strength": 118,
+        "avg_strength": 11.8
+      }
+    ]
+  },
+  "la": {
+    "ticket": [
+      25,
+      37,
+      47,
+      52
+    ],
+    "bonus": 4,
+    "top_numbers": [
+      [
+        25,
+        3.40909090909091
+      ],
+      [
+        47,
+        3.0346534653465356
+      ],
+      [
+        37,
+        2.4242424242424243
+      ],
+      [
+        3,
+        2.126929674099486
+      ],
+      [
+        52,
+        2.021276595744681
+      ],
+      [
+        15,
+        1.54
+      ],
+      [
+        10,
+        1.04
+      ],
+      [
+        31,
+        1.04
+      ],
+      [
+        43,
+        0.5
+      ],
+      [
+        26,
+        0.5
+      ]
+    ],
+    "overdue": [
+      {
+        "number": 25,
+        "current_gap": 40,
+        "avg_gap": 9.069767441860465,
+        "p95_gap": 27.499999999999993,
+        "max_gap": 42,
+        "overdue_ratio": 4.410256410256411,
+        "urgency": 1.454545454545455
+      },
+      {
+        "number": 47,
+        "current_gap": 32,
+        "avg_gap": 8.229166666666666,
+        "p95_gap": 25.249999999999993,
+        "max_gap": 58,
+        "overdue_ratio": 3.888607594936709,
+        "urgency": 1.2673267326732678
+      },
+      {
+        "number": 37,
+        "current_gap": 30,
+        "avg_gap": 10.972222222222221,
+        "p95_gap": 24.75,
+        "max_gap": 28,
+        "overdue_ratio": 2.7341772151898738,
+        "urgency": 1.2121212121212122
+      },
+      {
+        "number": 3,
+        "current_gap": 31,
+        "avg_gap": 9.925,
+        "p95_gap": 29.14999999999999,
+        "max_gap": 45,
+        "overdue_ratio": 3.1234256926952138,
+        "urgency": 1.063464837049743
+      },
+      {
+        "number": 52,
+        "current_gap": 19,
+        "avg_gap": 8.533333333333333,
+        "p95_gap": 18.799999999999997,
+        "max_gap": 43,
+        "overdue_ratio": 2.2265625,
+        "urgency": 1.0106382978723405
+      }
+    ],
+    "periodic": [
+      {
+        "number": 15,
+        "period": 37,
+        "correlation": 0.22252932028473724,
+        "last_appearance": 432
+      },
+      {
+        "number": 22,
+        "period": 48,
+        "correlation": 0.20345548438528424,
+        "last_appearance": 428
+      },
+      {
+        "number": 38,
+        "period": 20,
+        "correlation": 0.1918276972624799,
+        "last_appearance": 418
+      },
+      {
+        "number": 39,
+        "period": 15,
+        "correlation": 0.16615524491419476,
+        "last_appearance": 433
+      },
+      {
+        "number": 9,
+        "period": 21,
+        "correlation": 0.1624216144712004,
+        "last_appearance": 429
+      }
+    ],
+    "clusters": [
+      {
+        "numbers": [
+          15,
+          25,
+          26,
+          43,
+          51
+        ],
+        "internal_strength": 48,
+        "avg_strength": 4.8
+      },
+      {
+        "numbers": [
+          4,
+          17,
+          21,
+          42
+        ],
+        "internal_strength": 32,
+        "avg_strength": 5.333333333333333
+      },
+      {
+        "numbers": [
+          8,
+          11,
+          36,
+          47
+        ],
+        "internal_strength": 44,
+        "avg_strength": 7.333333333333333
+      }
+    ]
+  }
+}
