@@ -22,12 +22,11 @@ DATA_DIR = Path(__file__).parent / 'data'
 
 # User's personal HOLD tickets (PRIVATE - not shared with audience)
 # Updated to PURE POSITION FREQUENCY scoring (Jan 16, 2026)
-# Proven combos removed from scoring - validation showed 0-1.28x (not predictive)
-# Position frequency is the ONLY validated method (2.5x improvement)
-# CORRECTED Jan 23, 2026 - Pure Position Frequency (all numbers in top 8 pools)
+# Combined Method Optimal - Position Freq + Pair Freq + Momentum (Jan 23, 2026)
+# Backtested: L4L 9.83%, LA 9.91%, PB 6.22%, MM 12.05% (2+/5 hit rates)
 USER_HOLD_TICKETS = {
     'l4l': {
-        'main': [1, 12, 30, 39, 47], 'bonus': 2,
+        'main': [1, 12, 30, 39, 46], 'bonus': 11,
         'name': 'Lucky for Life', 'strategy': 'PERMANENT HOLD',
     },
     'la': {
@@ -35,11 +34,11 @@ USER_HOLD_TICKETS = {
         'name': 'Lotto America', 'strategy': 'PERMANENT HOLD',
     },
     'pb': {
-        'main': [1, 11, 33, 52, 69], 'bonus': 1,
+        'main': [1, 11, 27, 53, 68], 'bonus': 20,
         'name': 'Powerball', 'strategy': 'PERMANENT HOLD',
     },
     'mm': {
-        'main': [2, 10, 27, 42, 68], 'bonus': 1,
+        'main': [2, 18, 27, 42, 59], 'bonus': 1,
         'name': 'Mega Millions', 'strategy': 'PERMANENT HOLD',
     }
 }

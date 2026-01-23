@@ -1,18 +1,18 @@
 {
   "created": "2026-01-23",
-  "description": "User's personal HOLD FOREVER tickets - PURE POSITION FREQUENCY (Validated Method)",
+  "description": "User's personal HOLD FOREVER tickets - Combined Method (Pos Freq + Pairs + Momentum)",
   "tickets": {
     "pb": {
       "main": [
         1,
         11,
-        33,
-        52,
-        69
+        27,
+        53,
+        68
       ],
-      "bonus": 1,
+      "bonus": 20,
       "name": "Powerball",
-      "notes": "Pure position frequency - all 5 numbers in top 8 pools"
+      "notes": "Combined Method Optimal - better backtest results"
     },
     "la": {
       "main": [
@@ -24,7 +24,7 @@
       ],
       "bonus": 1,
       "name": "Lotto America",
-      "notes": "Pure position frequency - all 5 numbers in top 8 pools"
+      "notes": "Combined Method Optimal - better backtest results"
     },
     "l4l": {
       "main": [
@@ -32,23 +32,23 @@
         12,
         30,
         39,
-        47
+        46
       ],
-      "bonus": 2,
+      "bonus": 11,
       "name": "Lucky for Life",
-      "notes": "Pure position frequency - all 5 numbers in top 8 pools"
+      "notes": "Combined Method Optimal - better backtest results"
     },
     "mm": {
       "main": [
         2,
-        10,
+        18,
         27,
         42,
-        68
+        59
       ],
       "bonus": 1,
       "name": "Mega Millions",
-      "notes": "Pure position frequency - all 5 numbers in top 8 pools"
+      "notes": "Combined Method Optimal - better backtest results"
     }
   },
   "wins": {

@@ -7,12 +7,13 @@ from collections import Counter
 
 DATA_DIR = Path(__file__).parent / 'data'
 
-# CORRECTED HOLD tickets - Pure Position Frequency (Jan 23, 2026)
+# CORRECTED HOLD tickets - Combined Method Optimal (Jan 23, 2026)
+# Pos Freq + Pair Freq + Momentum - Backtested for best 2+/5 rates
 CURRENT_HOLD = {
-    'l4l': {'main': [1, 12, 30, 39, 47], 'bonus': 2},
+    'l4l': {'main': [1, 12, 30, 39, 46], 'bonus': 11},
     'la': {'main': [1, 15, 23, 42, 51], 'bonus': 1},
-    'pb': {'main': [1, 11, 33, 52, 69], 'bonus': 1},
-    'mm': {'main': [2, 10, 27, 42, 68], 'bonus': 1}
+    'pb': {'main': [1, 11, 27, 53, 68], 'bonus': 20},
+    'mm': {'main': [2, 18, 27, 42, 59], 'bonus': 1}
 }
 
 LOTTERY_CONFIG = {
