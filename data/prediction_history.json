@@ -2505,7 +2505,7 @@
       "timing": 1
     }
   },
-  "lastUpdated": "2026-01-23T14:41:45.854413",
+  "lastUpdated": "2026-01-24T18:55:12.600773",
   "learned_weights": {
     "l4l": {
       "near_hit": 1,
@@ -2528,12 +2528,12 @@
       "pairs": 10,
       "near_hit": 1,
       "trend": 1,
-      "repeat": 3,
-      "timing": 3
+      "repeat": 2,
+      "timing": 2
     },
     "mm": {
-      "near_hit": 2,
-      "trend": 2
+      "near_hit": 1,
+      "trend": 1
     }
   }
 }
