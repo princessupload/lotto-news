@@ -106,16 +106,19 @@ LOTTERY_CONFIG = {
 # These have 4-65x better odds than random based on historical position frequencies
 # CORRECTED Jan 23, 2026 - Pure Position Frequency (all numbers in top 8 pools)
 JACKPOT_OPTIMIZED = {
-    'l4l': {'main': [1, 12, 30, 39, 47], 'bonus': 2, 'improvement': '4.1x', 'effective_odds': '1 in 7.6M'},
-    'la':  {'main': [1, 15, 23, 42, 51], 'bonus': 1, 'improvement': '7.7x', 'effective_odds': '1 in 3.4M'},
-    'pb':  {'main': [1, 11, 33, 52, 69], 'bonus': 1, 'improvement': '11.2x', 'effective_odds': '1 in 26M'},
+    'l4l': {'main': [1, 12, 30, 39, 47], 'bonus': 11, 'improvement': '4.1x', 'effective_odds': '1 in 7.6M'},
+    'la':  {'main': [1, 15, 23, 42, 51], 'bonus': 4, 'improvement': '7.7x', 'effective_odds': '1 in 3.4M'},
+    'pb':  {'main': [1, 11, 33, 52, 69], 'bonus': 20, 'improvement': '11.2x', 'effective_odds': '1 in 26M'},
     'mm':  {'main': [2, 10, 27, 42, 68], 'bonus': 1, 'improvement': '65x', 'effective_odds': '1 in 4.6M'}
 }
 
-# Personal email ONLY for ticket recommendations
+# Personal email ONLY for ticket recommendations (4 recipients)
 EMAIL_CONFIG = {
     'recipients': [
-        'sarasinead@aol.com'
+        'sarasinead@aol.com',
+        'marysineadart@gmail.com',
+        'princessuploadie@gmail.com',
+        'rick@gamingdatasystems.com'
     ],
     'smtp_server': 'smtp.gmail.com',
     'smtp_port': 587,
