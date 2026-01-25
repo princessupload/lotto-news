@@ -2,7 +2,7 @@
   "L4L": {
     "amount": "$7,000/week for life",
     "cashValue": 5750000,
-    "nextDraw": "2026-01-24T21:38:00",
+    "nextDraw": "2026-01-25T21:38:00",
     "schedule": "Daily at 9:38 PM CT"
   },
   "LA": {
@@ -12,9 +12,9 @@
     "schedule": "Mon/Wed/Sat at 10:00 PM CT"
   },
   "PB": {
-    "amount": "$20M",
-    "cashValue": 9000000,
-    "nextDraw": "2026-01-24T21:59:00",
+    "amount": "$30M",
+    "cashValue": 13000000,
+    "nextDraw": "2026-01-26T21:59:00",
     "schedule": "Mon/Wed/Sat at 9:59 PM CT"
   },
   "MM": {
@@ -23,5 +23,5 @@
     "nextDraw": "2026-01-27T22:00:00",
     "schedule": "Tue/Fri at 10:00 PM CT"
   },
-  "lastUpdated": "2026-01-24T15:47:37.705868"
+  "lastUpdated": "2026-01-25T18:54:54.847643"
 }
